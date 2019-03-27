@@ -1,20 +1,36 @@
 package application;
 
 public class AdjacencyMatrix {
-	private Object[][] matrix;
+	private Object[][] adjMat;
+	int nodeCount;
 	
 	public AdjacencyMatrix() {
 		
 	}
 	
 	public AdjacencyMatrix(int size) {
-		this.matrix = new Object[size][size]; // All null by default
+		this.adjMat = new Object[size][size]; // All null by default
 	}
-		public void setMatrix(Object[][] matrix) {
-		this.matrix = matrix;
+	
+	
+	public void setAdjMat(Object[][] matrix) {
+		this.adjMat = matrix;
 	}
-	public Object[][] getMatrix() {
-		return this.matrix;
+	public Object[][] getAdjMat() {
+		return this.adjMat;
+	}
+
+	public int getNodeCount() {
+		return nodeCount;
+	}
+
+	public void setNodeCount(int nodeCount) {
+		this.nodeCount = nodeCount;
+	}
+	
+	
+	public void connect(int sourceID, int destID, Edge edge) {
+		adjMat[destID][sourceID] = adjMat[sourceID][destID] = edge;
 	}
 	
 }

@@ -38,4 +38,5 @@ public class Edge {
 	public void setDanger(int danger) {
 		this.danger = danger;
 	}
+
 }

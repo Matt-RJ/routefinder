@@ -9,6 +9,7 @@ package application;
 public class Node<C> {
 	private C contents;
 	private int nodeID;
+	private int cost = Integer.MAX_VALUE; // Used for Dijkstra's Algorithm
 	
 	public Node() {
 		
@@ -31,4 +32,13 @@ public class Node<C> {
 	public int getNodeID() {
 		return this.nodeID;
 	}
+
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+	
+	public int getCost() {
+		return cost;
+	}
+
 }

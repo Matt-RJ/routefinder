@@ -12,7 +12,6 @@ public class AdjacencyMatrix {
 		this.adjMat = new Object[size][size]; // All null by default
 	}
 	
-	
 	public void setAdjMat(Object[][] matrix) {
 		this.adjMat = matrix;
 	}

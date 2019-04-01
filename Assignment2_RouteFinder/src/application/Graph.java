@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  * Manages the entire graph, including the nodes, edges, and matrix.
@@ -59,6 +60,30 @@ public class Graph {
 	 */
 	public void connect(int source, int dest, Edge edge) {
 		this.getMatrix().connect(source, dest, edge);
+	}
+	
+	
+	// PATHFINDING
+	
+	/* 
+	 * Instead of having 3 Dijkstra's algorithm methods - one for distance, one for
+	 * danger, one for ease, using a comparator ought to work instead. When the
+	 * method is called from the controller, it's called with a lambda expression
+	 * based on the field required in the edges between nodes. The current method
+	 * is a skeleton to convey the idea - the actual implementation details can be
+	 * discussed in person.
+	 * 
+	 * - Mantas.
+	 */
+	
+	public ArrayList<Node<?>> findShortestByDijkstra(
+			Node<?> start,Node<?> lookingFor, Comparator<Node<?>> c) {
+		
+		ArrayList<Node<?>> path = new ArrayList<Node<?>>();
+		
+		
+		
+		return path;
 	}
 	
 }

@@ -86,7 +86,7 @@ public class Graph {
 	 */
 	public ArrayList<Node<?>> findPath(
 			Node<?> start,Node<?> lookingFor, Comparator<Node<?>> c) {
-		
+		 
 		ArrayList<Node<?>> path = new ArrayList<Node<?>>(); // Contains the final path
 		ArrayList<Node<?>> encountered = new ArrayList<Node<?>>();
 		ArrayList<Node<?>> unencountered = new ArrayList<Node<?>>();

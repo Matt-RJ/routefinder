@@ -77,7 +77,7 @@ public class Graph {
 	 * - Mantas.
 	 */
 	
-	/**
+	/** 
 	 * Finds the shortest route from the nodes 'start' to 'lookingfor', based
 	 * on a comparator c, which uses edge values.
 	 * @param start

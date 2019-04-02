@@ -12,6 +12,7 @@ public class Graph {
 	private AdjacencyMatrix matrix = null;
 	private ArrayList<Node<?>> nodes = new ArrayList<>();
 	private ArrayList<Edge> edges = new ArrayList<>();
+	private ArrayList<Town> towns = new ArrayList<>();
 	
 	public Graph() {
 		

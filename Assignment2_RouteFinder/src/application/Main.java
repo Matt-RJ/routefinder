@@ -7,6 +7,8 @@ import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
+	static Graph graph; // The main graph object for the program.
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {

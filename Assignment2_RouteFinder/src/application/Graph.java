@@ -76,14 +76,38 @@ public class Graph {
 	 * - Mantas.
 	 */
 	
-	public ArrayList<Node<?>> findShortestByDijkstra(
+	/**
+	 * Finds the shortest route from the nodes 'start' to 'lookingfor', based
+	 * on a comparator c, which uses edge values.
+	 * @param start
+	 * @param lookingFor
+	 * @param c
+	 * @return
+	 */
+	public ArrayList<Node<?>> findPath(
 			Node<?> start,Node<?> lookingFor, Comparator<Node<?>> c) {
 		
-		ArrayList<Node<?>> path = new ArrayList<Node<?>>();
+		ArrayList<Node<?>> path = new ArrayList<Node<?>>(); // Contains the final path
+		ArrayList<Node<?>> encountered = new ArrayList<Node<?>>();
+		ArrayList<Node<?>> unencountered = new ArrayList<Node<?>>();
+		
+		start.setCost(0);
+		unencountered.add(start);
+		Node<?> currentNode;
+		
+		do { // Loops through encountered list
+			
+			currentNode = unencountered.remove(0);
+			encountered.add(currentNode);
+			
+			if (currentNode.equals(lookingFor)) { // TODO: Change the conditional here to suit sys
+				// TODO: Reassemble path and return it
+			}
+			
+		} while (!unencountered.isEmpty());
 		
 		
-		
-		return path;
+		return null;
 	}
 	
 }

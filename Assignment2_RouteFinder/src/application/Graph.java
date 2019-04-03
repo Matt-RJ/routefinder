@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
- * Manages the entire graph, including the nodes, edges, and matrix.
+ * Manages the entire graph - including the nodes, edges, and matrix.
+ * 
  * @author Mantas Rajackas
  *
  */
@@ -41,6 +42,14 @@ public class Graph {
 	}
 	public void setEdges(ArrayList<Edge> edges) {
 		this.edges = edges;
+	}
+
+	public ArrayList<Town> getTowns() {
+		return towns;
+	}
+
+	public void setTowns(ArrayList<Town> towns) {
+		this.towns = towns;
 	}
 
 	/**
@@ -80,35 +89,46 @@ public class Graph {
 	/** 
 	 * Finds the shortest route from the nodes 'start' to 'lookingfor', based
 	 * on a comparator c, which uses edge values.
-	 * @param start
-	 * @param lookingFor
-	 * @param c
+	 * @param start - The node to start on
+	 * @param lookingFor - The node to end on
+	 * @param c - The comparator which determines the value to use as a cost for traveling paths
 	 * @return
 	 */
 	public ArrayList<Node<?>> findPath(
-			Node<?> start,Node<?> lookingFor, Comparator<Node<?>> c) {
+			Node<?> startNode,Node<?> lookingFor, Comparator<Edge> c) {
 		 
 		ArrayList<Node<?>> path = new ArrayList<Node<?>>(); // Contains the final path
+		int pathCost = 0;
 		ArrayList<Node<?>> encountered = new ArrayList<Node<?>>();
 		ArrayList<Node<?>> unencountered = new ArrayList<Node<?>>();
 		
-		start.setCost(0);
-		unencountered.add(start);
+		startNode.setCost(0);
+		unencountered.add(startNode);
 		Node<?> currentNode;
 		
-		do { // Loops through encountered list
+		do { // Loops through encountered list until it's empty
 			
 			currentNode = unencountered.remove(0);
-			encountered.add(currentNode);
+			encountered.add(currentNode); // Adds current node to encountered list
 			
-			if (currentNode.equals(lookingFor)) { // TODO: Change the conditional here to suit sys
+			if (currentNode.getContents().equals(lookingFor)) { // TODO: Change the conditional here to suit sys
 				// TODO: Reassemble path and return it
+				
+				path.add(lookingFor); // Add the destination node to the path list first.
+				pathCost = currentNode.getCost();
+				
+				while (currentNode != startNode) {
+					boolean foundPrevPathNode = false;
+					for (Node<?> n : encountered) {
+						// TODO
+					}
+				}
+				
 			}
 			
 		} while (!unencountered.isEmpty());
 		
-		
-		return null;
+		return null; // No valid path found
 	}
 	
 }

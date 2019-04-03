@@ -8,6 +8,10 @@ public class Town {
 		
 	}
 	
+	public Town(String name) {
+		this.name = name;
+	}
+	
 	public Town(String name, int x, int y) {
 		this.name = name;
 		this.x = x;

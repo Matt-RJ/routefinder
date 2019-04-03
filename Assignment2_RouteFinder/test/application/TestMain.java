@@ -17,7 +17,8 @@ public class TestMain {
 		for (char i = 'a'; i < 'f'; i++) {
 			graph.addNode(new Node<Character>(i));
 			System.out.println(i);
-			graph.connect(0, 2, new Edge());
+			graph.connect(3, 4, new Edge());
+			graph.connect(2, 0, new Edge());
 		}
 		
 		Object[][] mat = graph.getMatrix().getAdjMat();

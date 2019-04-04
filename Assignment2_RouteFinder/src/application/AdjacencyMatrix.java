@@ -16,6 +16,7 @@ public class AdjacencyMatrix {
 	
 	public AdjacencyMatrix(int size) {
 		this.adjMat = new Object[size][size]; // All null by default
+		this.nodeCount = size;
 	}
 	
 	public void setAdjMat(Object[][] matrix) {
@@ -31,6 +32,13 @@ public class AdjacencyMatrix {
 
 	public void setNodeCount(int nodeCount) {
 		this.nodeCount = nodeCount;
+	}
+	
+	public void increaseSize() {
+		// TODO: Fix this
+		int size = this.adjMat[0].length+1;
+		Object[][] newAdjMat = new Object[size][size];
+		System.arraycopy(this.adjMat, 0, newAdjMat, 0, size);
 	}
 	
 	/**

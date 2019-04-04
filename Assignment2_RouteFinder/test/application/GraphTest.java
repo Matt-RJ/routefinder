@@ -1,5 +1,7 @@
 package application;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -58,6 +60,31 @@ public class GraphTest {
 					   graph.getNodes().get(14),
 			(a,b) -> new Integer(a.getDistance()).compareTo(new Integer(b.getDistance())));
 		
+	}
+	
+	@Test
+	public void getNodeByTownNameReturnsCorrectTown() {
+		Node<Town> newTown = new Node<>(new Town("testTown"));
+		graph.addNode(newTown);
+		assertEquals(newTown, graph.getNodeByTownName("testTown"));
+	}
+	
+	@Test
+	public void getNodeByTownNameReturnsNullWithNoMatch() {
+		Node<Town> newTown = new Node<>(new Town("testTown"));
+		assertEquals(null, graph.getNodeByTownName("myTown"));
+	}
+	
+	@Test
+	public void getEdgeReturnsCorrectEdge() {
+		Node<Town> node1 = new Node<>(new Town("Town1"));
+		Node<Town> node2 = new Node<>(new Town("Town2"));
+		Edge newEdge = new Edge();
+		graph.addNode(node1);
+		graph.addNode(node2);
+		graph.connect(15, 16, newEdge);
+		printAdjMatrix();
+		assertEquals(newEdge, graph.getEdge(15, 16));
 	}
 	
 	/**

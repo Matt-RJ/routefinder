@@ -14,14 +14,6 @@ public class Graph {
 	private ArrayList<Node<?>> nodes = new ArrayList<>();
 	private ArrayList<Edge> edges = new ArrayList<>();
 	private ArrayList<Town> towns = new ArrayList<>();
-	
-	public ArrayList<Town> getTowns() {
-		return this.towns;
-	}
-
-	public void setTowns(ArrayList<Town> towns) {
-		this.towns = towns;
-	}
 
 	public Graph() {
 		

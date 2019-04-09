@@ -9,7 +9,7 @@ import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
-	static Graph graph; // The main graph object for the program.
+	static Graph graph = new Graph(5); // The main graph object for the program.
 	
 	@Override
 	public void start(Stage primaryStage) {

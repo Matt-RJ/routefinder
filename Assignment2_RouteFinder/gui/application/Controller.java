@@ -157,7 +157,7 @@ public class Controller {
 			if (((Town) firstNodeTown.getContents()).getName() == firstTownConnect.getText()) {
 				Main.graph.getNodes().forEach(secondNodeTown -> {
 					if (((Town) secondNodeTown.getContents()).getName() == secondTownConnect.getText()) {
-						Main.graph.connect(firstNodeTown.getNodeID() , secondNodeTown.getNodeID(), new Edge());
+						Main.graph.connect(firstNodeTown, secondNodeTown, new Edge());
 					}
 				});
 			}

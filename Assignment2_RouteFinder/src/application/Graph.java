@@ -2,32 +2,21 @@ package application;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 
 /**
- * Manages the entire graph - including the nodes, edges, and matrix.
+ * Manages an entire graph - including the nodes, edges, and matrix.
  * 
  * @author Mantas Rajackas
  *
  */
 public class Graph {
-	private AdjacencyMatrix matrix = null;
 	private ArrayList<Node<?>> nodes = new ArrayList<>();
 	private ArrayList<Edge> edges = new ArrayList<>();
 	private ArrayList<Town> towns = new ArrayList<>();
 
 	public Graph() {
 		
-	}
-	
-	public Graph(int size) {
-		this.matrix = new AdjacencyMatrix(size);
-	}
-	
-	public AdjacencyMatrix getMatrix() {
-		return matrix;
-	}
-	public void setMatrix(AdjacencyMatrix matrix) {
-		this.matrix = matrix;
 	}
 
 	public ArrayList<Node<?>> getNodes() {
@@ -57,31 +46,39 @@ public class Graph {
 	 * @param node - The node to add.
 	 */
 	public void addNode(Node<?> node) {
-		node.setNodeID(matrix.getNodeCount());
-		this.matrix.setNodeCount(matrix.getNodeCount()+1);
 		this.nodes.add(node);
-		// TODO: Increase matrix size
 	}
 	
 	/**
 	 * Connects two nodes that are already in the graph.
-	 * @param source - Source node's ID.
-	 * @param dest - Destination node's ID.
+	 * @param source - Source node.
+	 * @param dest - Destination node.
 	 * @param edge - The Edge that connects the nodes.
 	 */
-	public void connect(int source, int dest, Edge edge) {
-		this.getMatrix().connect(source, dest, edge);
+	public void connect(Node<?> source, Node<?> dest, Edge edge) {
+		edge.setSource(source);
+		edge.setDest(dest);
+		
+		// Updating adjacency maps for both nodes
+		HashMap<Node<?>, Edge> sourceMap = source.getAdjMap();
+		HashMap<Node<?>, Edge> destMap = dest.getAdjMap();
+		sourceMap.put(dest, edge);
+		destMap.put(source, edge);
+		
+		this.edges.add(edge);
+		
+		// TODO: Test
 	}
 	
 	/**
 	 * Gets the Edge that connects two nodes.
-	 * @param sourceNodeID - The source node's ID.
-	 * @param destNodeID - The destination node's ID.
+	 * @param source - The source node.
+	 * @param dest - The destination node.
 	 * @return The Edge between the two nodes.
 	 */
-	public Edge getEdge(int sourceNodeID, int destNodeID) {
-		// TODO: Test this method
-		return (Edge) this.matrix.getAdjMat()[sourceNodeID][destNodeID];
+	public Edge getEdge(Node<?> source, Node<?> dest) {
+		// TODO: Test
+		return source.getAdjMap().get(dest);
 	}
 	
 	/**
@@ -90,7 +87,6 @@ public class Graph {
 	 * @return The node in the graph which holds a town with the required name.
 	 */
 	public Node<?> getNodeByTownName(String name) {
-		// TODO: Test this method
 		for (Node<?> n : this.nodes) {
 			if (((Town) n.getContents()).getName().equals(name)) return n;
 		}
@@ -109,39 +105,8 @@ public class Graph {
 	 */
 	public ArrayList<Node<?>> findPath(
 			Node<?> startNode,Node<?> lookingFor, Comparator<Edge> c) {
-		 
-		ArrayList<Node<?>> path = new ArrayList<Node<?>>(); // Contains the final path
-		int pathCost = 0;
-		ArrayList<Node<?>> encountered = new ArrayList<Node<?>>();
-		ArrayList<Node<?>> unencountered = new ArrayList<Node<?>>();
-		
-		startNode.setCost(0);
-		unencountered.add(startNode);
-		Node<?> currentNode;
-		
-		do { // Loops through encountered list until it's empty
-			
-			currentNode = unencountered.remove(0);
-			encountered.add(currentNode); // Adds current node to encountered list
-			
-			if (currentNode.getContents().equals(lookingFor)) { // TODO: Change the conditional here to suit sys
-				// TODO: Reassemble path and return it
-				
-				path.add(lookingFor); // Add the destination node to the path list first.
-				pathCost = currentNode.getCost();
-				
-				while (currentNode != startNode) {
-					boolean foundPrevPathNode = false;
-					for (Node<?> n : encountered) {
-						// TODO
-					}
-				}
-				
-			}
-			
-		} while (!unencountered.isEmpty());
-		
-		return null; // No valid path found
+		// TODO
+		return null;
 	}
 	
 }

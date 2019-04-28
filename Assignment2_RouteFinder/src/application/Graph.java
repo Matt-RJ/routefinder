@@ -1,12 +1,13 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
 /**
  * Manages an entire graph - including the nodes, edges, and matrix.
- * 
+ * The graph
  * @author Mantas Rajackas
  *
  */
@@ -42,10 +43,13 @@ public class Graph {
 	}
 
 	/**
-	 * Adds a new node into the graph.
+	 * Adds a new node into the graph. Ignores duplicate nodes.
 	 * @param node - The node to add.
 	 */
 	public void addNode(Node<?> node) {
+		for (Node<?> n : this.nodes) {
+			if (n.equals(node)) return;
+		}
 		this.nodes.add(node);
 	}
 	
@@ -56,6 +60,10 @@ public class Graph {
 	 * @param edge - The Edge that connects the nodes.
 	 */
 	public void connect(Node<?> source, Node<?> dest, Edge edge) {
+		for (Edge e: this.edges) {
+			if (e.equals(edge)) return; // Checks for duplicate edges
+		}
+		
 		edge.setSource(source);
 		edge.setDest(dest);
 		
@@ -66,7 +74,6 @@ public class Graph {
 		destMap.put(source, edge);
 		
 		this.edges.add(edge);
-		
 		// TODO: Test
 	}
 	
@@ -98,15 +105,76 @@ public class Graph {
 	/** 
 	 * Finds the shortest route from the nodes 'start' to 'lookingfor', based
 	 * on a comparator c, which uses edge values.
-	 * @param start - The node to start on.
+	 * @param startNode - The node to start on.
 	 * @param lookingFor - The node to end on.
-	 * @param c - The comparator which determines the value to use as a cost for traveling paths.
+	 * @param c - The comparator which determines the value to use as a cost for travelling paths.
 	 * @return An array of Node objects, in order from start to finish.
 	 */
 	public ArrayList<Node<?>> findPath(
 			Node<?> startNode,Node<?> lookingFor, Comparator<Edge> c) {
-		// TODO
-		return null;
+		// TODO: Only uses the distance for now. Update to allow the use of any variable in an Edge
+		
+		ArrayList<Node<?>> path = new ArrayList<>(); // Will contain the final path
+		ArrayList<Node<?>> encountered = new ArrayList<>(); // Nodes already visited
+		ArrayList<Node<?>> unencountered = new ArrayList<>(); // Nodes yet to visit
+		
+		startNode.setCost(0);
+		unencountered.add(startNode);
+		Node<?> currentNode;
+		
+		do { // Until no more nodes left in unencountered
+			currentNode = unencountered.remove(0); // Gets the next unencountered node as current node
+			encountered.add(currentNode);		   // and makes it encountered
+			
+			if (currentNode.equals(lookingFor)) { // Destination node found - Assemble path and return it
+				// TODO
+				// TODO: Remove the following after testing
+				/*
+				for (Node<?> n : encountered) {
+					System.out.println(((Town) n.getContents()).getName() + "  " + n.getCost());
+				}
+				System.out.println(encountered);
+				*/
+				
+				path.add(currentNode);
+				// TODO: Consider adding a way to get the cost of the entire path
+				
+				while(currentNode != startNode) {
+					boolean foundPrevPathNode = false;
+					for (Node<?> n : encountered) {
+						for (Node<?> adjNode : n.getAdjMap().keySet()) { // For each node connected to n
+							// TODO
+							if (adjNode == currentNode && currentNode.getCost() - n.getAdjMap().get(adjNode).getDistance() == n.getCost()) {
+								path.add(0, n);
+								currentNode = n;
+								foundPrevPathNode = true;
+								break;
+							}
+							if (foundPrevPathNode) break;
+						}
+					}
+				}
+				
+				// Resets node costs to default
+				for (Node<?> n : encountered) n.setCost(Integer.MAX_VALUE);
+				for (Node<?> n : unencountered) n.setCost(Integer.MAX_VALUE);
+				
+				return path; // Shortest path found
+			}
+			
+			// Destination node not found yet
+			HashMap<Node<?>,Edge> adjMap = currentNode.getAdjMap();
+			for (Node<?> n : adjMap.keySet()) { // For each adjacent node in currentNode
+				if (!encountered.contains(n)) {
+					// TODO: The line below uses getDistance instead of the comparator
+					n.setCost(Integer.min(n.getCost(), currentNode.getCost()+adjMap.get(n).getDistance()));
+					unencountered.add(n);
+				}
+			}
+			Collections.sort(unencountered, (n1,n2)->n1.getCost()-n2.getCost());
+		}
+		while (!unencountered.isEmpty());
+		return null; // No path found
 	}
 	
 }

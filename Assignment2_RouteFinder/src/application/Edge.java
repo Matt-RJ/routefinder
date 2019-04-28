@@ -1,11 +1,18 @@
 package application;
 
+/**
+ * 
+ * @author Mantas Rajackas
+ *
+ */
 public class Edge {
+	
 	private int distance;
 	private int ease;
 	private int danger;
 	
-	private Node<?> source; // 
+	// The two nodes that the edge is connected to
+	private Node<?> source; 
 	private Node<?> dest;
 	
 	public Edge() {
@@ -16,14 +23,6 @@ public class Edge {
 		this.distance = distance;
 		this.ease = ease;
 		this.danger = danger;
-	}
-	
-	public Edge(int distance, int ease, int danger, Node<?> source, Node<?> dest) {
-		this.distance = distance;
-		this.ease = ease;
-		this.danger = danger;
-		this.source = source;
-		this.dest = dest;
 	}
 
 	public int getDistance() {

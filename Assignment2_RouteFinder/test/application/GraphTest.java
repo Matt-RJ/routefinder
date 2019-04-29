@@ -1,6 +1,7 @@
 package application;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 
@@ -93,34 +94,38 @@ public class GraphTest {
 	
 	@Test
 	public void DijkstraTestDistance() {
-		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "danger");
+		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "distance");
+		System.out.println("A-F by distance");
 		for (Node<?> n : path) {
 			System.out.println(((Town) n.getContents()).getName());
 		}
+		System.out.println();
 	}
 	
 	@Test
 	public void DijkstraTestEase() {
-		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "danger");
+		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "ease");
+		System.out.println("A-F by ease");
 		for (Node<?> n : path) {
 			System.out.println(((Town) n.getContents()).getName());
 		}
+		System.out.println();
 	}
 	
 	@Test
 	public void DijkstraTestDanger() {
 		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "danger");
+		System.out.println("A-F by danger");
 		for (Node<?> n : path) {
 			System.out.println(((Town) n.getContents()).getName());
 		}
+		System.out.println();
 	}
 	
 	@Test
 	public void DijkstraTestInvalidWeight() {
-		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "danger");
-		for (Node<?> n : path) {
-			System.out.println(((Town) n.getContents()).getName());
-		}
+		assertThrows(IllegalArgumentException.class, () -> graph.findPath(nodeA, nodeF, "otherVariable"));	
+		
 	}
 	
 	@Test

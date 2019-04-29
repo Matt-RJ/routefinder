@@ -92,8 +92,32 @@ public class GraphTest {
 	}
 	
 	@Test
-	public void DijkstraTest() {
-		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeM, null);
+	public void DijkstraTestDistance() {
+		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "danger");
+		for (Node<?> n : path) {
+			System.out.println(((Town) n.getContents()).getName());
+		}
+	}
+	
+	@Test
+	public void DijkstraTestEase() {
+		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "danger");
+		for (Node<?> n : path) {
+			System.out.println(((Town) n.getContents()).getName());
+		}
+	}
+	
+	@Test
+	public void DijkstraTestDanger() {
+		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "danger");
+		for (Node<?> n : path) {
+			System.out.println(((Town) n.getContents()).getName());
+		}
+	}
+	
+	@Test
+	public void DijkstraTestInvalidWeight() {
+		ArrayList<Node<?>> path = graph.findPath(nodeA, nodeF, "danger");
 		for (Node<?> n : path) {
 			System.out.println(((Town) n.getContents()).getName());
 		}

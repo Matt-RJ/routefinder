@@ -3,7 +3,7 @@ package application;
 import java.util.HashMap;
 
 /**
- * 
+ * A node in a Graph object.
  * @author Mantas Rajackas
  *
  * @param <C> - The contents of the node.

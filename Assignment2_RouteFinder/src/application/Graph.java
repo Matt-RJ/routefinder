@@ -107,11 +107,10 @@ public class Graph {
 	 * on a comparator c, which uses edge values.
 	 * @param startNode - The node to start on.
 	 * @param lookingFor - The node to end on.
-	 * @param c - The comparator which determines the value to use as a cost for travelling paths.
+	 * @param weightType - Determines what Edge weight to use, can be "distance", "ease", or "danger".
 	 * @return An array of Node objects, in order from start to finish.
 	 */
-	public ArrayList<Node<?>> findPath(
-			Node<?> startNode,Node<?> lookingFor, Comparator<Edge> c) {
+	public ArrayList<Node<?>> findPath(Node<?> startNode,Node<?> lookingFor, String weightType) {
 		// TODO: Only uses the distance for now. Update to allow the use of any variable in an Edge
 		
 		ArrayList<Node<?>> path = new ArrayList<>(); // Will contain the final path
@@ -127,15 +126,6 @@ public class Graph {
 			encountered.add(currentNode);		   // and makes it encountered
 			
 			if (currentNode.equals(lookingFor)) { // Destination node found - Assemble path and return it
-				// TODO
-				// TODO: Remove the following after testing
-				/*
-				for (Node<?> n : encountered) {
-					System.out.println(((Town) n.getContents()).getName() + "  " + n.getCost());
-				}
-				System.out.println(encountered);
-				*/
-				
 				path.add(currentNode);
 				// TODO: Consider adding a way to get the cost of the entire path
 				
@@ -144,7 +134,8 @@ public class Graph {
 					for (Node<?> n : encountered) {
 						for (Node<?> adjNode : n.getAdjMap().keySet()) { // For each node connected to n
 							// TODO
-							if (adjNode == currentNode && currentNode.getCost() - n.getAdjMap().get(adjNode).getDistance() == n.getCost()) {
+							if (adjNode == currentNode && currentNode.getCost() 
+									- n.getAdjMap().get(adjNode).getWeight(weightType) == n.getCost()) {
 								path.add(0, n);
 								currentNode = n;
 								foundPrevPathNode = true;
@@ -166,8 +157,9 @@ public class Graph {
 			HashMap<Node<?>,Edge> adjMap = currentNode.getAdjMap();
 			for (Node<?> n : adjMap.keySet()) { // For each adjacent node in currentNode
 				if (!encountered.contains(n)) {
-					// TODO: The line below uses getDistance instead of the comparator
-					n.setCost(Integer.min(n.getCost(), currentNode.getCost()+adjMap.get(n).getDistance()));
+					
+					// TODO: The line below uses getDistance instead a chosen method
+					n.setCost(Integer.min(n.getCost(), currentNode.getCost()+adjMap.get(n).getWeight(weightType)));
 					unencountered.add(n);
 				}
 			}
@@ -176,5 +168,4 @@ public class Graph {
 		while (!unencountered.isEmpty());
 		return null; // No path found
 	}
-	
 }

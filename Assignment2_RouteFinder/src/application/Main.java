@@ -49,7 +49,7 @@ public class Main extends Application {
 	 * Saves the current graph setup to an XML file.
 	 * @throws IOException
 	 */
-	public void saveGraph() throws IOException {
+	public static void saveGraph() throws IOException {
 		FileOutputStream fos = new FileOutputStream(new File("customGraph.xml"));
 		XMLEncoder encoder = new XMLEncoder(fos);
 		encoder.writeObject(graph);
@@ -62,7 +62,7 @@ public class Main extends Application {
 	 * @throws FileNotFoundException if customGraph.xml is not found.
 	 * @throws IOException
 	 */
-	public void loadGraph() throws FileNotFoundException, IOException {
+	public static void loadGraph() throws FileNotFoundException, IOException {
 		FileInputStream fis = new FileInputStream("customGraph.xml");
 		XMLDecoder decoder = new XMLDecoder(fis);
 		Graph loadedGraph = (Graph) decoder.readObject();

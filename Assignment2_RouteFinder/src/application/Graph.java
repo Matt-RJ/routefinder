@@ -102,6 +102,40 @@ public class Graph {
 	
 	// PATHFINDING
 	
+	public ArrayList<ArrayList<Node<?>>> findPathPermutations(Node<?> startNode, ArrayList<Node<?>> encountered, Node<?> lookingFor) {
+		
+		// TODO
+		
+		ArrayList<ArrayList<Node<?>>> result = null, temp2;
+		
+		if (startNode.equals(lookingFor)) {
+			ArrayList<Node<?>> temp = new ArrayList<>();
+			temp.add(startNode);
+			result = new ArrayList<>();
+			result.add(temp);
+			return result;
+		}
+		
+		if (encountered == null) encountered = new ArrayList<>();
+		encountered.add(startNode);
+		
+		for (Node<?> adjNode : startNode.getAdjMap().keySet()) {
+			if (!encountered.contains(adjNode)) {
+				temp2 = findPathPermutations(adjNode, new ArrayList<>(encountered), lookingFor);
+				
+				if (temp2 != null) {
+					for (ArrayList<Node<?>> x : temp2) {
+						x.add(0,startNode);
+					}
+					if (result == null) result = temp2;
+					else result.addAll(temp2);
+				}
+			}
+		}
+		
+		return result;
+	}
+	
 	/** 
 	 * Finds the shortest route from the nodes 'start' to 'lookingfor', based
 	 * on a comparator c, which uses edge values.
@@ -110,7 +144,7 @@ public class Graph {
 	 * @param weightType - Determines what Edge weight to use, can be "distance", "ease", or "danger".
 	 * @return An array of Node objects, in order from start to finish.
 	 */
-	public ArrayList<Node<?>> findPath(Node<?> startNode,Node<?> lookingFor, String weightType) {
+	public ArrayList<Node<?>> findShortestPath(Node<?> startNode, Node<?> lookingFor, String weightType) {
 		// TODO: Only uses the distance for now. Update to allow the use of any variable in an Edge
 		
 		ArrayList<Node<?>> path = new ArrayList<>(); // Will contain the final path

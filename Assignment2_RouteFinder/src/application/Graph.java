@@ -2,7 +2,6 @@ package application;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -102,7 +101,7 @@ public class Graph {
 	
 	// PATHFINDING
 	
-	public ArrayList<ArrayList<Node<?>>> findPathPermutations(Node<?> startNode, ArrayList<Node<?>> encountered, Node<?> lookingFor) {
+	public ArrayList<ArrayList<Node<?>>> findPathPermutations(Node<?> startNode, Node<?> lookingFor, ArrayList<Node<?>> encountered) {
 		
 		// TODO
 		
@@ -121,7 +120,7 @@ public class Graph {
 		
 		for (Node<?> adjNode : startNode.getAdjMap().keySet()) {
 			if (!encountered.contains(adjNode)) {
-				temp2 = findPathPermutations(adjNode, new ArrayList<>(encountered), lookingFor);
+				temp2 = findPathPermutations(adjNode, lookingFor, new ArrayList<>(encountered));
 				
 				if (temp2 != null) {
 					for (ArrayList<Node<?>> x : temp2) {

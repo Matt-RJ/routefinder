@@ -167,7 +167,7 @@ public class GraphTest {
 		graph.connect(extra16, extra17, new Edge());
 		graph.connect(extra17, extra1, new Edge());
 		
-		ArrayList<ArrayList<Node<?>>> permutations = graph.findPathPermutations(nodeA, null, nodeF);
+		ArrayList<ArrayList<Node<?>>> permutations = graph.findPathPermutations(nodeA, nodeF, null);
 		int nr = 0;
 		for (ArrayList<Node<?>> i : permutations) {
 			System.out.println("Permutation " + nr + ":");

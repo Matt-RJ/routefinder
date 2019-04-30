@@ -16,7 +16,12 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
-
+/**
+ * 
+ * @author Mantas Rajackas
+ * @author Adam Smith
+ *
+ */
 public class Main extends Application {
 	static Graph graph = new Graph(); // The main graph object for the program.
 	

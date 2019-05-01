@@ -1,6 +1,9 @@
 package application;
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
@@ -8,10 +11,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+
 
 public class Controller {
 
@@ -70,6 +76,9 @@ public class Controller {
     private Button addThisTown;
 
     @FXML
+    private Button cancelButton;
+    
+    @FXML
     private TextField addTownName;
 
     @FXML
@@ -92,6 +101,15 @@ public class Controller {
 
     @FXML
     private TextField secondTownConnect;
+
+    @FXML
+    private Label hoverOverTownName;
+    
+    @FXML
+    private TextArea pathListTextBox;
+    
+    @FXML
+    private TextArea waypointListTexBox;
     
     /**
 	 * Grabs the x,y value of the mouse when called, converting from the original double to int (for Town class)
@@ -113,21 +131,38 @@ public class Controller {
     	button.setOpacity(0.5);
     	button.setText(town.getName());
     	
-    	button.setOnAction(new EventHandler<ActionEvent>() {
+    	button.setOnMouseEntered(new EventHandler<MouseEvent>() {
+    		public void handle(MouseEvent event) {
+    			hoverOverTownName.setText(town.getName());
+    			hoverOverTownName.setLayoutX(button.getLayoutX()+25);
+    			hoverOverTownName.setLayoutY(button.getLayoutY()-25);
+    			hoverOverTownName.setVisible(true);
+    		}
+    	});
+    	
+    	button.setOnMouseExited(new EventHandler<MouseEvent>() {
+    		public void handle(MouseEvent event) {
+    			hoverOverTownName.setVisible(false);
+    		}
+    	});
+    	
+    	button.setOnMouseClicked(new EventHandler<MouseEvent>() {
     		
-    		public void handle(ActionEvent event) {
+    		public void handle(MouseEvent event) {
     			if (connectTownsPane.visibleProperty().get()) {
     				townSelectedForConnection(town);
     			}
     			else {
     				if (fromTownName.getText().length() == 0) {
     					fromTownName.setText(town.getName());
-    				} else {
+    				} else if (toTownName.getText().length() == 0) {
     					toTownName.setText(town.getName());
+    				} else {
+    					
+    					waypointListTexBox.setText(waypointListTexBox.getText()+", \n"+town.getName());
     				}
     			}
     		}
-    		
     	});
     	
     	mapPane.getChildren().add(button);
@@ -153,15 +188,8 @@ public class Controller {
     @FXML
     void connectTwoTowns(MouseEvent event) {
     	if (firstTownConnect.getText().length() == 0 || secondTownConnect.getText().length() == 0) return;
-    	Main.graph.getNodes().forEach(firstNodeTown -> {
-			if (((Town) firstNodeTown.getContents()).getName() == firstTownConnect.getText()) {
-				Main.graph.getNodes().forEach(secondNodeTown -> {
-					if (((Town) secondNodeTown.getContents()).getName() == secondTownConnect.getText()) {
-						Main.graph.connect(firstNodeTown.getNodeID() , secondNodeTown.getNodeID(), new Edge());
-					}
-				});
-			}
-		});
+    	Main.graph.connect(Main.graph.getNodeByTownName(firstTownConnect.getText()).getNodeID(), Main.graph.getNodeByTownName(secondTownConnect.getText()).getNodeID(), new Edge());
+					
     }
     
     /**
@@ -174,8 +202,11 @@ public class Controller {
     		addTownPane.setVisible(false);
     		addTownsButton.setText("Add Towns");
     		clearAddTownTextBoxes();
+    		connectTownsButton.setVisible(true);
+    		
     	} else {
     		addTownPane.setVisible(true);
+    		connectTownsButton.setVisible(false);
     		addTownsButton.setText("Finish");
     	}
     }
@@ -191,10 +222,12 @@ public class Controller {
     	if (connectTownsPane.visibleProperty().get()) {
     		connectTownsPane.setVisible(false);
     		connectTownsButton.setText("Connect Towns");
+    		addTownsButton.setVisible(true);
     		clearAddTownTextBoxes();
     	} else {
     		connectTownsPane.setVisible(true);
     		connectTownsButton.setText("Finish");
+    		addTownsButton.setVisible(false);
     	}
     }
     
@@ -250,5 +283,10 @@ public class Controller {
     	});
     }
     
+    @FXML
+    void cancelButtonClicked(MouseEvent event) {
+    	fromTownName.setText("");
+    	toTownName.setText("");
+    }
     
 }

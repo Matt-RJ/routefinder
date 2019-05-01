@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
@@ -13,18 +14,37 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
+      <Button fx:id="cancelButton" layoutX="1455.0" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#cancelButtonClicked" prefHeight="90.0" prefWidth="386.0" text="Cancel">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Button>
       <Button fx:id="connectTownsButton" layoutX="1401.0" layoutY="909.0" mnemonicParsing="false" onMouseClicked="#connectTownsClicked" prefHeight="67.0" prefWidth="257.0" text="Connect Towns">
          <font>
             <Font size="28.0" />
          </font>
       </Button>
-      <ScrollPane fx:id="throughPathList" layoutX="1558.0" layoutY="417.0" prefHeight="448.0" prefWidth="280.0" />
+      <ScrollPane fx:id="throughPathList" layoutX="1558.0" layoutY="418.0" prefHeight="448.0" prefWidth="280.0">
+         <content>
+            <TextArea fx:id="waypointListTexBox" disable="true" prefHeight="708.0" prefWidth="264.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </TextArea>
+         </content></ScrollPane>
       <Label fx:id="throughLabel" layoutX="1558.0" layoutY="376.0" prefHeight="42.0" prefWidth="280.0" style="-fx-border-color: grey;" text="    Through" textAlignment="CENTER" textFill="#ff3535">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ScrollPane fx:id="routePathList" layoutX="1041.0" layoutY="543.0" prefHeight="322.0" prefWidth="482.0" />
+      <ScrollPane fx:id="routePathList" layoutX="1041.0" layoutY="543.0" prefHeight="322.0" prefWidth="482.0">
+         <content>
+            <TextArea fx:id="pathListTextBox" disable="true" prefHeight="555.0" prefWidth="464.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </TextArea>
+         </content></ScrollPane>
       <Label fx:id="pathLabel" layoutX="1041.0" layoutY="505.0" prefHeight="40.0" prefWidth="484.0" style="-fx-border-color: grey;" text="                                Path" textAlignment="CENTER" textFill="#ff3535">
          <font>
             <Font size="25.0" />
@@ -53,7 +73,7 @@
             <Font size="28.0" />
          </font>
       </Label>
-      <Button fx:id="findRouteButton" layoutX="1036.0" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#findRouteButtonClicked" prefHeight="91.0" prefWidth="798.0" text="Find Route">
+      <Button fx:id="findRouteButton" layoutX="1040.0" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#findRouteButtonClicked" prefHeight="91.0" prefWidth="385.0" text="Find Route">
          <font>
             <Font size="28.0" />
          </font>
@@ -95,6 +115,11 @@
                   <Image url="@Map.PNG" />
                </image>
             </ImageView>
+            <Label fx:id="hoverOverTownName" layoutX="129.0" layoutY="723.0" prefHeight="40.0" prefWidth="178.0" style="-fx-background-color: white;" visible="false">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <Button fx:id="pressToStartButton" layoutX="-48.0" layoutY="-48.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onMousePressed="#pressToStartClicked" prefHeight="1130.0" prefWidth="1969.0" text="Click to Start" visible="false">

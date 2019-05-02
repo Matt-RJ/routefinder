@@ -73,7 +73,6 @@ public class Graph {
 		destMap.put(source, edge);
 		
 		this.edges.add(edge);
-		// TODO: Test
 	}
 	
 	/**
@@ -83,7 +82,6 @@ public class Graph {
 	 * @return The Edge between the two nodes.
 	 */
 	public Edge getEdge(Node<?> source, Node<?> dest) {
-		// TODO: Test
 		return source.getAdjMap().get(dest);
 	}
 	
@@ -101,12 +99,18 @@ public class Graph {
 	
 	// PATHFINDING
 	
+	/**
+	 * Finds all the possible paths from startNode to lookingFor
+	 * @param startNode - The node to start at.
+	 * @param lookingFor - The node to finish at.
+	 * @param encountered - The encountered nodes (Null if calling this method normally)
+	 * @return
+	 */
 	public ArrayList<ArrayList<Node<?>>> findPathPermutations(Node<?> startNode, Node<?> lookingFor, ArrayList<Node<?>> encountered) {
-		
-		// TODO
 		
 		ArrayList<ArrayList<Node<?>>> result = null, temp2;
 		
+		// Assemble path and return it
 		if (startNode.equals(lookingFor)) {
 			ArrayList<Node<?>> temp = new ArrayList<>();
 			temp.add(startNode);
@@ -118,6 +122,7 @@ public class Graph {
 		if (encountered == null) encountered = new ArrayList<>();
 		encountered.add(startNode);
 		
+		// Continue recursively
 		for (Node<?> adjNode : startNode.getAdjMap().keySet()) {
 			if (!encountered.contains(adjNode)) {
 				temp2 = findPathPermutations(adjNode, lookingFor, new ArrayList<>(encountered));
@@ -144,7 +149,6 @@ public class Graph {
 	 * @return An array of Node objects, in order from start to finish.
 	 */
 	public ArrayList<Node<?>> findShortestPath(Node<?> startNode, Node<?> lookingFor, String weightType) {
-		// TODO: Only uses the distance for now. Update to allow the use of any variable in an Edge
 		
 		ArrayList<Node<?>> path = new ArrayList<>(); // Will contain the final path
 		ArrayList<Node<?>> encountered = new ArrayList<>(); // Nodes already visited
@@ -160,13 +164,11 @@ public class Graph {
 			
 			if (currentNode.equals(lookingFor)) { // Destination node found - Assemble path and return it
 				path.add(currentNode);
-				// TODO: Consider adding a way to get the cost of the entire path
 				
 				while(currentNode != startNode) {
 					boolean foundPrevPathNode = false;
 					for (Node<?> n : encountered) {
 						for (Node<?> adjNode : n.getAdjMap().keySet()) { // For each node connected to n
-							// TODO
 							if (adjNode == currentNode && currentNode.getCost() 
 									- n.getAdjMap().get(adjNode).getWeight(weightType) == n.getCost()) {
 								path.add(0, n);
@@ -190,8 +192,6 @@ public class Graph {
 			HashMap<Node<?>,Edge> adjMap = currentNode.getAdjMap();
 			for (Node<?> n : adjMap.keySet()) { // For each adjacent node in currentNode
 				if (!encountered.contains(n)) {
-					
-					// TODO: The line below uses getDistance instead a chosen method
 					n.setCost(Integer.min(n.getCost(), currentNode.getCost()+adjMap.get(n).getWeight(weightType)));
 					unencountered.add(n);
 				}
@@ -217,13 +217,18 @@ public class Graph {
 		for (Node<?> waypoint : waypoints) {
 			
 			// start to first waypoint
-			if (waypoint.equals(waypoints.get(0))) {
-				path.addAll(findShortestPath(start, waypoint, weightType));
+			if (waypoints.indexOf(waypoint) == 0) {
+				ArrayList<Node<?>> pathPart = findShortestPath(start, waypoint, weightType);
+				//pathPart.remove(pathPart.size()-1);
+				path.addAll(pathPart);
 			}
 			
 			// waypoint to next waypoint
-			if (waypoints.get(waypoints.indexOf(waypoint)+1) != null) {
+			if (waypoints.indexOf(waypoint)+1 > waypoints.size()) {
 				path.addAll(findShortestPath(waypoint, waypoints.get(waypoints.indexOf(waypoint)+1), weightType));
+				ArrayList<Node<?>> pathPart = findShortestPath(start, waypoint, weightType);
+				//pathPart.remove(pathPart.size()-1);
+				path.addAll(pathPart);
 			}
 			// waypoint to end
 			else {

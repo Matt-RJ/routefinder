@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_181" class="java.beans.XMLDecoder">
+<java version="1.8.0_171" class="java.beans.XMLDecoder">
  <object class="application.Graph" id="Graph0">
   <void property="edges">
    <void method="add">
     <object class="application.Edge" id="Edge0">
      <void property="danger">
-      <int>12231</int>
+      <int>2</int>
      </void>
      <void property="dest">
       <object class="application.Node" id="Node0">
@@ -14,60 +14,44 @@
          <object class="application.Node" id="Node1">
           <void property="adjMap">
            <void method="put">
+            <object idref="Node0"/>
+            <object idref="Edge0"/>
+           </void>
+           <void method="put">
             <object class="application.Node" id="Node2">
              <void property="adjMap">
               <void method="put">
                <object idref="Node1"/>
                <object class="application.Edge" id="Edge1">
                 <void property="danger">
-                 <int>34</int>
+                 <int>2</int>
                 </void>
                 <void property="dest">
+                 <object idref="Node2"/>
+                </void>
+                <void property="distance">
+                 <int>2</int>
+                </void>
+                <void property="ease">
+                 <int>2</int>
+                </void>
+                <void property="source">
                  <object idref="Node1"/>
                 </void>
-                <void property="distance">
-                 <int>213</int>
-                </void>
-                <void property="ease">
-                 <int>324</int>
-                </void>
-                <void property="source">
-                 <object idref="Node2"/>
-                </void>
                 <void property="danger">
-                 <int>34</int>
+                 <int>2</int>
                 </void>
                 <void property="dest">
+                 <object idref="Node2"/>
+                </void>
+                <void property="distance">
+                 <int>2</int>
+                </void>
+                <void property="ease">
+                 <int>2</int>
+                </void>
+                <void property="source">
                  <object idref="Node1"/>
-                </void>
-                <void property="distance">
-                 <int>213</int>
-                </void>
-                <void property="ease">
-                 <int>324</int>
-                </void>
-                <void property="source">
-                 <object idref="Node2"/>
-                </void>
-               </object>
-              </void>
-              <void method="put">
-               <object idref="Node0"/>
-               <object class="application.Edge" id="Edge2">
-                <void property="danger">
-                 <int>321</int>
-                </void>
-                <void property="dest">
-                 <object idref="Node2"/>
-                </void>
-                <void property="distance">
-                 <int>231</int>
-                </void>
-                <void property="ease">
-                 <int>321</int>
-                </void>
-                <void property="source">
-                 <object idref="Node0"/>
                 </void>
                </object>
               </void>
@@ -75,54 +59,22 @@
                <object class="application.Node" id="Node3">
                 <void property="adjMap">
                  <void method="put">
-                  <object idref="Node1"/>
-                  <object class="application.Edge" id="Edge3">
-                   <void property="danger">
-                    <int>312</int>
-                   </void>
-                   <void property="dest">
-                    <object idref="Node1"/>
-                   </void>
-                   <void property="distance">
-                    <int>423</int>
-                   </void>
-                   <void property="ease">
-                    <int>42</int>
-                   </void>
-                   <void property="source">
-                    <object idref="Node3"/>
-                   </void>
-                  </object>
-                 </void>
-                 <void method="put">
                   <object idref="Node2"/>
-                  <object class="application.Edge" id="Edge4">
-                   <void property="danger">
-                    <int>123</int>
-                   </void>
+                  <object class="application.Edge" id="Edge2">
                    <void property="dest">
                     <object idref="Node3"/>
                    </void>
                    <void property="distance">
-                    <int>321</int>
-                   </void>
-                   <void property="ease">
-                    <int>132</int>
+                    <int>1</int>
                    </void>
                    <void property="source">
                     <object idref="Node2"/>
                    </void>
-                   <void property="danger">
-                    <int>123</int>
-                   </void>
                    <void property="dest">
                     <object idref="Node3"/>
                    </void>
                    <void property="distance">
-                    <int>321</int>
-                   </void>
-                   <void property="ease">
-                    <int>132</int>
+                    <int>1</int>
                    </void>
                    <void property="source">
                     <object idref="Node2"/>
@@ -133,22 +85,37 @@
                   <object class="application.Node" id="Node4">
                    <void property="adjMap">
                     <void method="put">
-                     <object idref="Node1"/>
-                     <object class="application.Edge" id="Edge5">
+                     <object idref="Node3"/>
+                     <object class="application.Edge" id="Edge3">
                       <void property="danger">
-                       <int>321321</int>
+                       <int>1</int>
                       </void>
                       <void property="dest">
-                       <object idref="Node4"/>
+                       <object idref="Node3"/>
                       </void>
                       <void property="distance">
-                       <int>32</int>
+                       <int>3</int>
                       </void>
                       <void property="ease">
-                       <int>312</int>
+                       <int>1</int>
                       </void>
                       <void property="source">
-                       <object idref="Node1"/>
+                       <object idref="Node4"/>
+                      </void>
+                      <void property="danger">
+                       <int>1</int>
+                      </void>
+                      <void property="dest">
+                       <object idref="Node3"/>
+                      </void>
+                      <void property="distance">
+                       <int>3</int>
+                      </void>
+                      <void property="ease">
+                       <int>1</int>
+                      </void>
+                      <void property="source">
+                       <object idref="Node4"/>
                       </void>
                      </object>
                     </void>
@@ -156,396 +123,2243 @@
                      <object class="application.Node" id="Node5">
                       <void property="adjMap">
                        <void method="put">
-                        <object idref="Node4"/>
-                        <object class="application.Edge" id="Edge6">
-                         <void property="danger">
-                          <int>34</int>
-                         </void>
-                         <void property="dest">
-                          <object idref="Node4"/>
-                         </void>
-                         <void property="distance">
-                          <int>23</int>
-                         </void>
-                         <void property="ease">
-                          <int>32</int>
-                         </void>
-                         <void property="source">
-                          <object idref="Node5"/>
-                         </void>
-                         <void property="danger">
-                          <int>34</int>
-                         </void>
-                         <void property="dest">
-                          <object idref="Node4"/>
-                         </void>
-                         <void property="distance">
-                          <int>23</int>
-                         </void>
-                         <void property="ease">
-                          <int>32</int>
-                         </void>
-                         <void property="source">
-                          <object idref="Node5"/>
-                         </void>
-                        </object>
-                       </void>
-                       <void method="put">
                         <object class="application.Node" id="Node6">
                          <void property="adjMap">
                           <void method="put">
-                           <object idref="Node1"/>
+                           <object class="application.Node" id="Node7">
+                            <void property="adjMap">
+                             <void method="put">
+                              <object idref="Node6"/>
+                              <object class="application.Edge" id="Edge4">
+                               <void property="danger">
+                                <int>1</int>
+                               </void>
+                               <void property="dest">
+                                <object idref="Node6"/>
+                               </void>
+                               <void property="distance">
+                                <int>4</int>
+                               </void>
+                               <void property="ease">
+                                <int>1</int>
+                               </void>
+                               <void property="source">
+                                <object idref="Node7"/>
+                               </void>
+                               <void property="danger">
+                                <int>1</int>
+                               </void>
+                               <void property="dest">
+                                <object idref="Node6"/>
+                               </void>
+                               <void property="distance">
+                                <int>4</int>
+                               </void>
+                               <void property="ease">
+                                <int>1</int>
+                               </void>
+                               <void property="source">
+                                <object idref="Node7"/>
+                               </void>
+                              </object>
+                             </void>
+                             <void method="put">
+                              <object class="application.Node" id="Node8">
+                               <void property="adjMap">
+                                <void method="put">
+                                 <object idref="Node6"/>
+                                 <object class="application.Edge" id="Edge5">
+                                  <void property="danger">
+                                   <int>1</int>
+                                  </void>
+                                  <void property="dest">
+                                   <object idref="Node6"/>
+                                  </void>
+                                  <void property="distance">
+                                   <int>5</int>
+                                  </void>
+                                  <void property="ease">
+                                   <int>1</int>
+                                  </void>
+                                  <void property="source">
+                                   <object idref="Node8"/>
+                                  </void>
+                                 </object>
+                                </void>
+                                <void method="put">
+                                 <object idref="Node7"/>
+                                 <object class="application.Edge" id="Edge6">
+                                  <void property="dest">
+                                   <object idref="Node7"/>
+                                  </void>
+                                  <void property="distance">
+                                   <int>2</int>
+                                  </void>
+                                  <void property="ease">
+                                   <int>1</int>
+                                  </void>
+                                  <void property="source">
+                                   <object idref="Node8"/>
+                                  </void>
+                                  <void property="dest">
+                                   <object idref="Node7"/>
+                                  </void>
+                                  <void property="distance">
+                                   <int>2</int>
+                                  </void>
+                                  <void property="ease">
+                                   <int>1</int>
+                                  </void>
+                                  <void property="source">
+                                   <object idref="Node8"/>
+                                  </void>
+                                 </object>
+                                </void>
+                               </void>
+                               <void property="contents">
+                                <object class="application.Town" id="Town0">
+                                 <void property="name">
+                                  <string>Oldtown</string>
+                                 </void>
+                                 <void property="x">
+                                  <int>121</int>
+                                 </void>
+                                 <void property="y">
+                                  <int>735</int>
+                                 </void>
+                                </object>
+                               </void>
+                              </object>
+                              <object idref="Edge6"/>
+                             </void>
+                            </void>
+                            <void property="contents">
+                             <object class="application.Town" id="Town1">
+                              <void property="name">
+                               <string>Brightwater Keep</string>
+                              </void>
+                              <void property="x">
+                               <int>131</int>
+                              </void>
+                              <void property="y">
+                               <int>639</int>
+                              </void>
+                             </object>
+                            </void>
+                           </object>
+                           <object idref="Edge4"/>
+                          </void>
+                          <void method="put">
+                           <object idref="Node5"/>
                            <object class="application.Edge" id="Edge7">
                             <void property="danger">
-                             <int>23</int>
+                             <int>2</int>
                             </void>
                             <void property="dest">
                              <object idref="Node6"/>
                             </void>
                             <void property="distance">
-                             <int>23</int>
+                             <int>5</int>
                             </void>
                             <void property="ease">
-                             <int>23</int>
+                             <int>2</int>
                             </void>
                             <void property="source">
-                             <object idref="Node1"/>
+                             <object idref="Node5"/>
+                            </void>
+                            <void property="danger">
+                             <int>2</int>
+                            </void>
+                            <void property="dest">
+                             <object idref="Node6"/>
+                            </void>
+                            <void property="distance">
+                             <int>5</int>
+                            </void>
+                            <void property="ease">
+                             <int>2</int>
+                            </void>
+                            <void property="source">
+                             <object idref="Node5"/>
                             </void>
                            </object>
                           </void>
                           <void method="put">
-                           <object idref="Node5"/>
-                           <object class="application.Edge" id="Edge8">
-                            <void property="danger">
-                             <int>2123</int>
+                           <object class="application.Node" id="Node9">
+                            <void property="adjMap">
+                             <void method="put">
+                              <object idref="Node6"/>
+                              <object class="application.Edge" id="Edge8">
+                               <void property="danger">
+                                <int>1</int>
+                               </void>
+                               <void property="dest">
+                                <object idref="Node9"/>
+                               </void>
+                               <void property="distance">
+                                <int>7</int>
+                               </void>
+                               <void property="ease">
+                                <int>1</int>
+                               </void>
+                               <void property="source">
+                                <object idref="Node6"/>
+                               </void>
+                               <void property="danger">
+                                <int>1</int>
+                               </void>
+                               <void property="dest">
+                                <object idref="Node9"/>
+                               </void>
+                               <void property="distance">
+                                <int>7</int>
+                               </void>
+                               <void property="ease">
+                                <int>1</int>
+                               </void>
+                               <void property="source">
+                                <object idref="Node6"/>
+                               </void>
+                              </object>
+                             </void>
+                             <void method="put">
+                              <object class="application.Node" id="Node10">
+                               <void property="adjMap">
+                                <void method="put">
+                                 <object idref="Node9"/>
+                                 <object class="application.Edge" id="Edge9">
+                                  <void property="danger">
+                                   <int>3</int>
+                                  </void>
+                                  <void property="dest">
+                                   <object idref="Node10"/>
+                                  </void>
+                                  <void property="distance">
+                                   <int>2</int>
+                                  </void>
+                                  <void property="ease">
+                                   <int>6</int>
+                                  </void>
+                                  <void property="source">
+                                   <object idref="Node9"/>
+                                  </void>
+                                  <void property="danger">
+                                   <int>3</int>
+                                  </void>
+                                  <void property="dest">
+                                   <object idref="Node10"/>
+                                  </void>
+                                  <void property="distance">
+                                   <int>2</int>
+                                  </void>
+                                  <void property="ease">
+                                   <int>6</int>
+                                  </void>
+                                  <void property="source">
+                                   <object idref="Node9"/>
+                                  </void>
+                                 </object>
+                                </void>
+                                <void method="put">
+                                 <object idref="Node2"/>
+                                 <object class="application.Edge" id="Edge10">
+                                  <void property="danger">
+                                   <int>1</int>
+                                  </void>
+                                  <void property="dest">
+                                   <object idref="Node10"/>
+                                  </void>
+                                  <void property="distance">
+                                   <int>4</int>
+                                  </void>
+                                  <void property="ease">
+                                   <int>2</int>
+                                  </void>
+                                  <void property="source">
+                                   <object idref="Node2"/>
+                                  </void>
+                                 </object>
+                                </void>
+                                <void method="put">
+                                 <object class="application.Node" id="Node11">
+                                  <void property="adjMap">
+                                   <void method="put">
+                                    <object idref="Node10"/>
+                                    <object class="application.Edge" id="Edge11">
+                                     <void property="danger">
+                                      <int>5</int>
+                                     </void>
+                                     <void property="dest">
+                                      <object idref="Node11"/>
+                                     </void>
+                                     <void property="distance">
+                                      <int>3</int>
+                                     </void>
+                                     <void property="ease">
+                                      <int>5</int>
+                                     </void>
+                                     <void property="source">
+                                      <object idref="Node10"/>
+                                     </void>
+                                     <void property="danger">
+                                      <int>5</int>
+                                     </void>
+                                     <void property="dest">
+                                      <object idref="Node11"/>
+                                     </void>
+                                     <void property="distance">
+                                      <int>3</int>
+                                     </void>
+                                     <void property="ease">
+                                      <int>5</int>
+                                     </void>
+                                     <void property="source">
+                                      <object idref="Node10"/>
+                                     </void>
+                                    </object>
+                                   </void>
+                                   <void method="put">
+                                    <object class="application.Node" id="Node12">
+                                     <void property="adjMap">
+                                      <void method="put">
+                                       <object idref="Node0"/>
+                                       <object class="application.Edge" id="Edge12">
+                                        <void property="danger">
+                                         <int>3</int>
+                                        </void>
+                                        <void property="dest">
+                                         <object idref="Node12"/>
+                                        </void>
+                                        <void property="distance">
+                                         <int>2</int>
+                                        </void>
+                                        <void property="ease">
+                                         <int>4</int>
+                                        </void>
+                                        <void property="source">
+                                         <object idref="Node0"/>
+                                        </void>
+                                       </object>
+                                      </void>
+                                      <void method="put">
+                                       <object idref="Node2"/>
+                                       <object class="application.Edge" id="Edge13">
+                                        <void property="danger">
+                                         <int>1</int>
+                                        </void>
+                                        <void property="dest">
+                                         <object idref="Node12"/>
+                                        </void>
+                                        <void property="distance">
+                                         <int>3</int>
+                                        </void>
+                                        <void property="ease">
+                                         <int>2</int>
+                                        </void>
+                                        <void property="source">
+                                         <object idref="Node2"/>
+                                        </void>
+                                       </object>
+                                      </void>
+                                      <void method="put">
+                                       <object class="application.Node" id="Node13">
+                                        <void property="adjMap">
+                                         <void method="put">
+                                          <object class="application.Node" id="Node14">
+                                           <void property="adjMap">
+                                            <void method="put">
+                                             <object class="application.Node" id="Node15">
+                                              <void property="adjMap">
+                                               <void method="put">
+                                                <object idref="Node14"/>
+                                                <object class="application.Edge" id="Edge14">
+                                                 <void property="danger">
+                                                  <int>3</int>
+                                                 </void>
+                                                 <void property="dest">
+                                                  <object idref="Node15"/>
+                                                 </void>
+                                                 <void property="distance">
+                                                  <int>5</int>
+                                                 </void>
+                                                 <void property="ease">
+                                                  <int>3</int>
+                                                 </void>
+                                                 <void property="source">
+                                                  <object idref="Node14"/>
+                                                 </void>
+                                                 <void property="danger">
+                                                  <int>3</int>
+                                                 </void>
+                                                 <void property="dest">
+                                                  <object idref="Node15"/>
+                                                 </void>
+                                                 <void property="distance">
+                                                  <int>5</int>
+                                                 </void>
+                                                 <void property="ease">
+                                                  <int>3</int>
+                                                 </void>
+                                                 <void property="source">
+                                                  <object idref="Node14"/>
+                                                 </void>
+                                                </object>
+                                               </void>
+                                               <void method="put">
+                                                <object class="application.Node" id="Node16">
+                                                 <void property="adjMap">
+                                                  <void method="put">
+                                                   <object idref="Node14"/>
+                                                   <object class="application.Edge" id="Edge15">
+                                                    <void property="danger">
+                                                     <int>5</int>
+                                                    </void>
+                                                    <void property="dest">
+                                                     <object idref="Node16"/>
+                                                    </void>
+                                                    <void property="distance">
+                                                     <int>7</int>
+                                                    </void>
+                                                    <void property="ease">
+                                                     <int>4</int>
+                                                    </void>
+                                                    <void property="source">
+                                                     <object idref="Node14"/>
+                                                    </void>
+                                                   </object>
+                                                  </void>
+                                                  <void method="put">
+                                                   <object idref="Node15"/>
+                                                   <object class="application.Edge" id="Edge16">
+                                                    <void property="danger">
+                                                     <int>7</int>
+                                                    </void>
+                                                    <void property="dest">
+                                                     <object idref="Node16"/>
+                                                    </void>
+                                                    <void property="distance">
+                                                     <int>7</int>
+                                                    </void>
+                                                    <void property="ease">
+                                                     <int>6</int>
+                                                    </void>
+                                                    <void property="source">
+                                                     <object idref="Node15"/>
+                                                    </void>
+                                                    <void property="danger">
+                                                     <int>7</int>
+                                                    </void>
+                                                    <void property="dest">
+                                                     <object idref="Node16"/>
+                                                    </void>
+                                                    <void property="distance">
+                                                     <int>7</int>
+                                                    </void>
+                                                    <void property="ease">
+                                                     <int>6</int>
+                                                    </void>
+                                                    <void property="source">
+                                                     <object idref="Node15"/>
+                                                    </void>
+                                                   </object>
+                                                  </void>
+                                                  <void method="put">
+                                                   <object class="application.Node" id="Node17">
+                                                    <void property="adjMap">
+                                                     <void method="put">
+                                                      <object idref="Node16"/>
+                                                      <object class="application.Edge" id="Edge17">
+                                                       <void property="danger">
+                                                        <int>9</int>
+                                                       </void>
+                                                       <void property="dest">
+                                                        <object idref="Node16"/>
+                                                       </void>
+                                                       <void property="distance">
+                                                        <int>8</int>
+                                                       </void>
+                                                       <void property="ease">
+                                                        <int>7</int>
+                                                       </void>
+                                                       <void property="source">
+                                                        <object idref="Node17"/>
+                                                       </void>
+                                                       <void property="danger">
+                                                        <int>9</int>
+                                                       </void>
+                                                       <void property="dest">
+                                                        <object idref="Node16"/>
+                                                       </void>
+                                                       <void property="distance">
+                                                        <int>8</int>
+                                                       </void>
+                                                       <void property="ease">
+                                                        <int>7</int>
+                                                       </void>
+                                                       <void property="source">
+                                                        <object idref="Node17"/>
+                                                       </void>
+                                                      </object>
+                                                     </void>
+                                                     <void method="put">
+                                                      <object class="application.Node" id="Node18">
+                                                       <void property="adjMap">
+                                                        <void method="put">
+                                                         <object idref="Node17"/>
+                                                         <object class="application.Edge" id="Edge18">
+                                                          <void property="danger">
+                                                           <int>3</int>
+                                                          </void>
+                                                          <void property="dest">
+                                                           <object idref="Node17"/>
+                                                          </void>
+                                                          <void property="distance">
+                                                           <int>2</int>
+                                                          </void>
+                                                          <void property="ease">
+                                                           <int>3</int>
+                                                          </void>
+                                                          <void property="source">
+                                                           <object idref="Node18"/>
+                                                          </void>
+                                                          <void property="danger">
+                                                           <int>3</int>
+                                                          </void>
+                                                          <void property="dest">
+                                                           <object idref="Node17"/>
+                                                          </void>
+                                                          <void property="distance">
+                                                           <int>2</int>
+                                                          </void>
+                                                          <void property="ease">
+                                                           <int>3</int>
+                                                          </void>
+                                                          <void property="source">
+                                                           <object idref="Node18"/>
+                                                          </void>
+                                                         </object>
+                                                        </void>
+                                                        <void method="put">
+                                                         <object class="application.Node" id="Node19">
+                                                          <void property="adjMap">
+                                                           <void method="put">
+                                                            <object idref="Node15"/>
+                                                            <object class="application.Edge" id="Edge19">
+                                                             <void property="danger">
+                                                              <int>6</int>
+                                                             </void>
+                                                             <void property="dest">
+                                                              <object idref="Node19"/>
+                                                             </void>
+                                                             <void property="distance">
+                                                              <int>4</int>
+                                                             </void>
+                                                             <void property="ease">
+                                                              <int>9</int>
+                                                             </void>
+                                                             <void property="source">
+                                                              <object idref="Node15"/>
+                                                             </void>
+                                                            </object>
+                                                           </void>
+                                                           <void method="put">
+                                                            <object idref="Node18"/>
+                                                            <object class="application.Edge" id="Edge20">
+                                                             <void property="danger">
+                                                              <int>4</int>
+                                                             </void>
+                                                             <void property="dest">
+                                                              <object idref="Node18"/>
+                                                             </void>
+                                                             <void property="distance">
+                                                              <int>3</int>
+                                                             </void>
+                                                             <void property="ease">
+                                                              <int>2</int>
+                                                             </void>
+                                                             <void property="source">
+                                                              <object idref="Node19"/>
+                                                             </void>
+                                                             <void property="danger">
+                                                              <int>4</int>
+                                                             </void>
+                                                             <void property="dest">
+                                                              <object idref="Node18"/>
+                                                             </void>
+                                                             <void property="distance">
+                                                              <int>3</int>
+                                                             </void>
+                                                             <void property="ease">
+                                                              <int>2</int>
+                                                             </void>
+                                                             <void property="source">
+                                                              <object idref="Node19"/>
+                                                             </void>
+                                                            </object>
+                                                           </void>
+                                                           <void method="put">
+                                                            <object class="application.Node" id="Node20">
+                                                             <void property="adjMap">
+                                                              <void method="put">
+                                                               <object class="application.Node" id="Node21">
+                                                                <void property="adjMap">
+                                                                 <void method="put">
+                                                                  <object idref="Node20"/>
+                                                                  <object class="application.Edge" id="Edge21">
+                                                                   <void property="danger">
+                                                                    <int>1</int>
+                                                                   </void>
+                                                                   <void property="dest">
+                                                                    <object idref="Node21"/>
+                                                                   </void>
+                                                                   <void property="distance">
+                                                                    <int>3</int>
+                                                                   </void>
+                                                                   <void property="ease">
+                                                                    <int>2</int>
+                                                                   </void>
+                                                                   <void property="source">
+                                                                    <object idref="Node20"/>
+                                                                   </void>
+                                                                   <void property="danger">
+                                                                    <int>1</int>
+                                                                   </void>
+                                                                   <void property="dest">
+                                                                    <object idref="Node21"/>
+                                                                   </void>
+                                                                   <void property="distance">
+                                                                    <int>3</int>
+                                                                   </void>
+                                                                   <void property="ease">
+                                                                    <int>2</int>
+                                                                   </void>
+                                                                   <void property="source">
+                                                                    <object idref="Node20"/>
+                                                                   </void>
+                                                                  </object>
+                                                                 </void>
+                                                                 <void method="put">
+                                                                  <object class="application.Node" id="Node22">
+                                                                   <void property="adjMap">
+                                                                    <void method="put">
+                                                                     <object idref="Node21"/>
+                                                                     <object class="application.Edge" id="Edge22">
+                                                                      <void property="dest">
+                                                                       <object idref="Node22"/>
+                                                                      </void>
+                                                                      <void property="distance">
+                                                                       <int>1</int>
+                                                                      </void>
+                                                                      <void property="source">
+                                                                       <object idref="Node21"/>
+                                                                      </void>
+                                                                      <void property="dest">
+                                                                       <object idref="Node22"/>
+                                                                      </void>
+                                                                      <void property="distance">
+                                                                       <int>1</int>
+                                                                      </void>
+                                                                      <void property="source">
+                                                                       <object idref="Node21"/>
+                                                                      </void>
+                                                                     </object>
+                                                                    </void>
+                                                                    <void method="put">
+                                                                     <object class="application.Node" id="Node23">
+                                                                      <void property="adjMap">
+                                                                       <void method="put">
+                                                                        <object idref="Node21"/>
+                                                                        <object class="application.Edge" id="Edge23">
+                                                                         <void property="danger">
+                                                                          <int>2</int>
+                                                                         </void>
+                                                                         <void property="dest">
+                                                                          <object idref="Node23"/>
+                                                                         </void>
+                                                                         <void property="distance">
+                                                                          <int>1</int>
+                                                                         </void>
+                                                                         <void property="ease">
+                                                                          <int>2</int>
+                                                                         </void>
+                                                                         <void property="source">
+                                                                          <object idref="Node21"/>
+                                                                         </void>
+                                                                        </object>
+                                                                       </void>
+                                                                       <void method="put">
+                                                                        <object idref="Node17"/>
+                                                                        <object class="application.Edge" id="Edge24">
+                                                                         <void property="danger">
+                                                                          <int>6</int>
+                                                                         </void>
+                                                                         <void property="dest">
+                                                                          <object idref="Node17"/>
+                                                                         </void>
+                                                                         <void property="distance">
+                                                                          <int>5</int>
+                                                                         </void>
+                                                                         <void property="ease">
+                                                                          <int>4</int>
+                                                                         </void>
+                                                                         <void property="source">
+                                                                          <object idref="Node23"/>
+                                                                         </void>
+                                                                        </object>
+                                                                       </void>
+                                                                       <void method="put">
+                                                                        <object idref="Node22"/>
+                                                                        <object class="application.Edge" id="Edge25">
+                                                                         <void property="danger">
+                                                                          <int>3</int>
+                                                                         </void>
+                                                                         <void property="dest">
+                                                                          <object idref="Node23"/>
+                                                                         </void>
+                                                                         <void property="distance">
+                                                                          <int>2</int>
+                                                                         </void>
+                                                                         <void property="ease">
+                                                                          <int>3</int>
+                                                                         </void>
+                                                                         <void property="source">
+                                                                          <object idref="Node22"/>
+                                                                         </void>
+                                                                         <void property="danger">
+                                                                          <int>3</int>
+                                                                         </void>
+                                                                         <void property="dest">
+                                                                          <object idref="Node23"/>
+                                                                         </void>
+                                                                         <void property="distance">
+                                                                          <int>2</int>
+                                                                         </void>
+                                                                         <void property="ease">
+                                                                          <int>3</int>
+                                                                         </void>
+                                                                         <void property="source">
+                                                                          <object idref="Node22"/>
+                                                                         </void>
+                                                                        </object>
+                                                                       </void>
+                                                                      </void>
+                                                                      <void property="contents">
+                                                                       <object class="application.Town" id="Town2">
+                                                                        <void property="name">
+                                                                         <string>Estermont</string>
+                                                                        </void>
+                                                                        <void property="x">
+                                                                         <int>888</int>
+                                                                        </void>
+                                                                        <void property="y">
+                                                                         <int>646</int>
+                                                                        </void>
+                                                                       </object>
+                                                                      </void>
+                                                                     </object>
+                                                                     <object idref="Edge25"/>
+                                                                    </void>
+                                                                   </void>
+                                                                   <void property="contents">
+                                                                    <object class="application.Town" id="Town3">
+                                                                     <void property="name">
+                                                                      <string>Rainwood</string>
+                                                                     </void>
+                                                                     <void property="x">
+                                                                      <int>818</int>
+                                                                     </void>
+                                                                     <void property="y">
+                                                                      <int>616</int>
+                                                                     </void>
+                                                                    </object>
+                                                                   </void>
+                                                                  </object>
+                                                                  <object idref="Edge22"/>
+                                                                 </void>
+                                                                 <void method="put">
+                                                                  <object idref="Node23"/>
+                                                                  <object idref="Edge23"/>
+                                                                 </void>
+                                                                </void>
+                                                                <void property="contents">
+                                                                 <object class="application.Town" id="Town4">
+                                                                  <void property="name">
+                                                                   <string>Cape Wrath</string>
+                                                                  </void>
+                                                                  <void property="x">
+                                                                   <int>820</int>
+                                                                  </void>
+                                                                  <void property="y">
+                                                                   <int>664</int>
+                                                                  </void>
+                                                                 </object>
+                                                                </void>
+                                                               </object>
+                                                               <object idref="Edge21"/>
+                                                              </void>
+                                                              <void method="put">
+                                                               <object class="application.Node" id="Node24">
+                                                                <void property="adjMap">
+                                                                 <void method="put">
+                                                                  <object idref="Node20"/>
+                                                                  <object class="application.Edge" id="Edge26">
+                                                                   <void property="danger">
+                                                                    <int>5</int>
+                                                                   </void>
+                                                                   <void property="dest">
+                                                                    <object idref="Node20"/>
+                                                                   </void>
+                                                                   <void property="distance">
+                                                                    <int>2</int>
+                                                                   </void>
+                                                                   <void property="ease">
+                                                                    <int>6</int>
+                                                                   </void>
+                                                                   <void property="source">
+                                                                    <object idref="Node24"/>
+                                                                   </void>
+                                                                   <void property="danger">
+                                                                    <int>5</int>
+                                                                   </void>
+                                                                   <void property="dest">
+                                                                    <object idref="Node20"/>
+                                                                   </void>
+                                                                   <void property="distance">
+                                                                    <int>2</int>
+                                                                   </void>
+                                                                   <void property="ease">
+                                                                    <int>6</int>
+                                                                   </void>
+                                                                   <void property="source">
+                                                                    <object idref="Node24"/>
+                                                                   </void>
+                                                                  </object>
+                                                                 </void>
+                                                                 <void method="put">
+                                                                  <object class="application.Node" id="Node25">
+                                                                   <void property="adjMap">
+                                                                    <void method="put">
+                                                                     <object idref="Node24"/>
+                                                                     <object class="application.Edge" id="Edge27">
+                                                                      <void property="danger">
+                                                                       <int>1</int>
+                                                                      </void>
+                                                                      <void property="dest">
+                                                                       <object idref="Node24"/>
+                                                                      </void>
+                                                                      <void property="distance">
+                                                                       <int>4</int>
+                                                                      </void>
+                                                                      <void property="ease">
+                                                                       <int>1</int>
+                                                                      </void>
+                                                                      <void property="source">
+                                                                       <object idref="Node25"/>
+                                                                      </void>
+                                                                      <void property="danger">
+                                                                       <int>1</int>
+                                                                      </void>
+                                                                      <void property="dest">
+                                                                       <object idref="Node24"/>
+                                                                      </void>
+                                                                      <void property="distance">
+                                                                       <int>4</int>
+                                                                      </void>
+                                                                      <void property="ease">
+                                                                       <int>1</int>
+                                                                      </void>
+                                                                      <void property="source">
+                                                                       <object idref="Node25"/>
+                                                                      </void>
+                                                                     </object>
+                                                                    </void>
+                                                                    <void method="put">
+                                                                     <object class="application.Node" id="Node26">
+                                                                      <void property="adjMap">
+                                                                       <void method="put">
+                                                                        <object idref="Node20"/>
+                                                                        <object class="application.Edge" id="Edge28">
+                                                                         <void property="danger">
+                                                                          <int>8</int>
+                                                                         </void>
+                                                                         <void property="dest">
+                                                                          <object idref="Node20"/>
+                                                                         </void>
+                                                                         <void property="distance">
+                                                                          <int>5</int>
+                                                                         </void>
+                                                                         <void property="ease">
+                                                                          <int>5</int>
+                                                                         </void>
+                                                                         <void property="source">
+                                                                          <object idref="Node26"/>
+                                                                         </void>
+                                                                        </object>
+                                                                       </void>
+                                                                       <void method="put">
+                                                                        <object idref="Node25"/>
+                                                                        <object class="application.Edge" id="Edge29">
+                                                                         <void property="dest">
+                                                                          <object idref="Node26"/>
+                                                                         </void>
+                                                                         <void property="distance">
+                                                                          <int>2</int>
+                                                                         </void>
+                                                                         <void property="ease">
+                                                                          <int>1</int>
+                                                                         </void>
+                                                                         <void property="source">
+                                                                          <object idref="Node25"/>
+                                                                         </void>
+                                                                         <void property="dest">
+                                                                          <object idref="Node26"/>
+                                                                         </void>
+                                                                         <void property="distance">
+                                                                          <int>2</int>
+                                                                         </void>
+                                                                         <void property="ease">
+                                                                          <int>1</int>
+                                                                         </void>
+                                                                         <void property="source">
+                                                                          <object idref="Node25"/>
+                                                                         </void>
+                                                                        </object>
+                                                                       </void>
+                                                                       <void method="put">
+                                                                        <object class="application.Node" id="Node27">
+                                                                         <void property="adjMap">
+                                                                          <void method="put">
+                                                                           <object idref="Node6"/>
+                                                                           <object class="application.Edge" id="Edge30">
+                                                                            <void property="dest">
+                                                                             <object idref="Node27"/>
+                                                                            </void>
+                                                                            <void property="distance">
+                                                                             <int>2</int>
+                                                                            </void>
+                                                                            <void property="ease">
+                                                                             <int>1</int>
+                                                                            </void>
+                                                                            <void property="source">
+                                                                             <object idref="Node6"/>
+                                                                            </void>
+                                                                           </object>
+                                                                          </void>
+                                                                          <void method="put">
+                                                                           <object idref="Node25"/>
+                                                                           <object class="application.Edge" id="Edge31">
+                                                                            <void property="dest">
+                                                                             <object idref="Node25"/>
+                                                                            </void>
+                                                                            <void property="distance">
+                                                                             <int>2</int>
+                                                                            </void>
+                                                                            <void property="ease">
+                                                                             <int>1</int>
+                                                                            </void>
+                                                                            <void property="source">
+                                                                             <object idref="Node27"/>
+                                                                            </void>
+                                                                           </object>
+                                                                          </void>
+                                                                          <void method="put">
+                                                                           <object idref="Node26"/>
+                                                                           <object class="application.Edge" id="Edge32">
+                                                                            <void property="dest">
+                                                                             <object idref="Node27"/>
+                                                                            </void>
+                                                                            <void property="distance">
+                                                                             <int>2</int>
+                                                                            </void>
+                                                                            <void property="ease">
+                                                                             <int>1</int>
+                                                                            </void>
+                                                                            <void property="source">
+                                                                             <object idref="Node26"/>
+                                                                            </void>
+                                                                            <void property="dest">
+                                                                             <object idref="Node27"/>
+                                                                            </void>
+                                                                            <void property="distance">
+                                                                             <int>2</int>
+                                                                            </void>
+                                                                            <void property="ease">
+                                                                             <int>1</int>
+                                                                            </void>
+                                                                            <void property="source">
+                                                                             <object idref="Node26"/>
+                                                                            </void>
+                                                                           </object>
+                                                                          </void>
+                                                                          <void method="put">
+                                                                           <object class="application.Node" id="Node28">
+                                                                            <void property="adjMap">
+                                                                             <void method="put">
+                                                                              <object idref="Node25"/>
+                                                                              <object class="application.Edge" id="Edge33">
+                                                                               <void property="danger">
+                                                                                <int>2</int>
+                                                                               </void>
+                                                                               <void property="dest">
+                                                                                <object idref="Node28"/>
+                                                                               </void>
+                                                                               <void property="distance">
+                                                                                <int>3</int>
+                                                                               </void>
+                                                                               <void property="ease">
+                                                                                <int>3</int>
+                                                                               </void>
+                                                                               <void property="source">
+                                                                                <object idref="Node25"/>
+                                                                               </void>
+                                                                              </object>
+                                                                             </void>
+                                                                             <void method="put">
+                                                                              <object idref="Node9"/>
+                                                                              <object class="application.Edge" id="Edge34">
+                                                                               <void property="danger">
+                                                                                <int>3</int>
+                                                                               </void>
+                                                                               <void property="dest">
+                                                                                <object idref="Node9"/>
+                                                                               </void>
+                                                                               <void property="distance">
+                                                                                <int>6</int>
+                                                                               </void>
+                                                                               <void property="ease">
+                                                                                <int>3</int>
+                                                                               </void>
+                                                                               <void property="source">
+                                                                                <object idref="Node28"/>
+                                                                               </void>
+                                                                              </object>
+                                                                             </void>
+                                                                             <void method="put">
+                                                                              <object class="application.Node" id="Node29">
+                                                                               <void property="adjMap">
+                                                                                <void method="put">
+                                                                                 <object idref="Node15"/>
+                                                                                 <object class="application.Edge" id="Edge35">
+                                                                                  <void property="danger">
+                                                                                   <int>1</int>
+                                                                                  </void>
+                                                                                  <void property="dest">
+                                                                                   <object idref="Node15"/>
+                                                                                  </void>
+                                                                                  <void property="distance">
+                                                                                   <int>5</int>
+                                                                                  </void>
+                                                                                  <void property="ease">
+                                                                                   <int>4</int>
+                                                                                  </void>
+                                                                                  <void property="source">
+                                                                                   <object idref="Node29"/>
+                                                                                  </void>
+                                                                                 </object>
+                                                                                </void>
+                                                                                <void method="put">
+                                                                                 <object idref="Node25"/>
+                                                                                 <object class="application.Edge" id="Edge36">
+                                                                                  <void property="danger">
+                                                                                   <int>1</int>
+                                                                                  </void>
+                                                                                  <void property="dest">
+                                                                                   <object idref="Node25"/>
+                                                                                  </void>
+                                                                                  <void property="distance">
+                                                                                   <int>3</int>
+                                                                                  </void>
+                                                                                  <void property="ease">
+                                                                                   <int>1</int>
+                                                                                  </void>
+                                                                                  <void property="source">
+                                                                                   <object idref="Node29"/>
+                                                                                  </void>
+                                                                                 </object>
+                                                                                </void>
+                                                                                <void method="put">
+                                                                                 <object idref="Node24"/>
+                                                                                 <object class="application.Edge" id="Edge37">
+                                                                                  <void property="danger">
+                                                                                   <int>1</int>
+                                                                                  </void>
+                                                                                  <void property="dest">
+                                                                                   <object idref="Node24"/>
+                                                                                  </void>
+                                                                                  <void property="distance">
+                                                                                   <int>3</int>
+                                                                                  </void>
+                                                                                  <void property="ease">
+                                                                                   <int>1</int>
+                                                                                  </void>
+                                                                                  <void property="source">
+                                                                                   <object idref="Node29"/>
+                                                                                  </void>
+                                                                                 </object>
+                                                                                </void>
+                                                                                <void method="put">
+                                                                                 <object idref="Node28"/>
+                                                                                 <object class="application.Edge" id="Edge38">
+                                                                                  <void property="danger">
+                                                                                   <int>1</int>
+                                                                                  </void>
+                                                                                  <void property="dest">
+                                                                                   <object idref="Node29"/>
+                                                                                  </void>
+                                                                                  <void property="distance">
+                                                                                   <int>2</int>
+                                                                                  </void>
+                                                                                  <void property="ease">
+                                                                                   <int>1</int>
+                                                                                  </void>
+                                                                                  <void property="source">
+                                                                                   <object idref="Node28"/>
+                                                                                  </void>
+                                                                                  <void property="danger">
+                                                                                   <int>1</int>
+                                                                                  </void>
+                                                                                  <void property="dest">
+                                                                                   <object idref="Node29"/>
+                                                                                  </void>
+                                                                                  <void property="distance">
+                                                                                   <int>2</int>
+                                                                                  </void>
+                                                                                  <void property="ease">
+                                                                                   <int>1</int>
+                                                                                  </void>
+                                                                                  <void property="source">
+                                                                                   <object idref="Node28"/>
+                                                                                  </void>
+                                                                                 </object>
+                                                                                </void>
+                                                                               </void>
+                                                                               <void property="contents">
+                                                                                <object class="application.Town" id="Town5">
+                                                                                 <void property="name">
+                                                                                  <string>Blueburn</string>
+                                                                                 </void>
+                                                                                 <void property="x">
+                                                                                  <int>516</int>
+                                                                                 </void>
+                                                                                 <void property="y">
+                                                                                  <int>442</int>
+                                                                                 </void>
+                                                                                </object>
+                                                                               </void>
+                                                                              </object>
+                                                                              <object idref="Edge38"/>
+                                                                             </void>
+                                                                             <void method="put">
+                                                                              <object idref="Node27"/>
+                                                                              <object class="application.Edge" id="Edge39">
+                                                                               <void property="danger">
+                                                                                <int>1</int>
+                                                                               </void>
+                                                                               <void property="dest">
+                                                                                <object idref="Node28"/>
+                                                                               </void>
+                                                                               <void property="distance">
+                                                                                <int>3</int>
+                                                                               </void>
+                                                                               <void property="ease">
+                                                                                <int>2</int>
+                                                                               </void>
+                                                                               <void property="source">
+                                                                                <object idref="Node27"/>
+                                                                               </void>
+                                                                               <void property="danger">
+                                                                                <int>1</int>
+                                                                               </void>
+                                                                               <void property="dest">
+                                                                                <object idref="Node28"/>
+                                                                               </void>
+                                                                               <void property="distance">
+                                                                                <int>3</int>
+                                                                               </void>
+                                                                               <void property="ease">
+                                                                                <int>2</int>
+                                                                               </void>
+                                                                               <void property="source">
+                                                                                <object idref="Node27"/>
+                                                                               </void>
+                                                                              </object>
+                                                                             </void>
+                                                                             <void method="put">
+                                                                              <object idref="Node13"/>
+                                                                              <object class="application.Edge" id="Edge40">
+                                                                               <void property="danger">
+                                                                                <int>3</int>
+                                                                               </void>
+                                                                               <void property="dest">
+                                                                                <object idref="Node13"/>
+                                                                               </void>
+                                                                               <void property="distance">
+                                                                                <int>6</int>
+                                                                               </void>
+                                                                               <void property="ease">
+                                                                                <int>3</int>
+                                                                               </void>
+                                                                               <void property="source">
+                                                                                <object idref="Node28"/>
+                                                                               </void>
+                                                                              </object>
+                                                                             </void>
+                                                                            </void>
+                                                                            <void property="contents">
+                                                                             <object class="application.Town" id="Town6">
+                                                                              <void property="name">
+                                                                               <string>Roseroad</string>
+                                                                              </void>
+                                                                              <void property="x">
+                                                                               <int>434</int>
+                                                                              </void>
+                                                                              <void property="y">
+                                                                               <int>410</int>
+                                                                              </void>
+                                                                             </object>
+                                                                            </void>
+                                                                           </object>
+                                                                           <object idref="Edge39"/>
+                                                                          </void>
+                                                                         </void>
+                                                                         <void property="contents">
+                                                                          <object class="application.Town" id="Town7">
+                                                                           <void property="name">
+                                                                            <string>Mander Keep</string>
+                                                                           </void>
+                                                                           <void property="x">
+                                                                            <int>344</int>
+                                                                           </void>
+                                                                           <void property="y">
+                                                                            <int>520</int>
+                                                                           </void>
+                                                                          </object>
+                                                                         </void>
+                                                                        </object>
+                                                                        <object idref="Edge32"/>
+                                                                       </void>
+                                                                      </void>
+                                                                      <void property="contents">
+                                                                       <object class="application.Town" id="Town8">
+                                                                        <void property="name">
+                                                                         <string>Nightsong</string>
+                                                                        </void>
+                                                                        <void property="x">
+                                                                         <int>389</int>
+                                                                        </void>
+                                                                        <void property="y">
+                                                                         <int>629</int>
+                                                                        </void>
+                                                                       </object>
+                                                                      </void>
+                                                                     </object>
+                                                                     <object idref="Edge29"/>
+                                                                    </void>
+                                                                    <void method="put">
+                                                                     <object idref="Node29"/>
+                                                                     <object idref="Edge36"/>
+                                                                    </void>
+                                                                    <void method="put">
+                                                                     <object idref="Node27"/>
+                                                                     <object idref="Edge31"/>
+                                                                    </void>
+                                                                    <void method="put">
+                                                                     <object idref="Node28"/>
+                                                                     <object idref="Edge33"/>
+                                                                    </void>
+                                                                   </void>
+                                                                   <void property="contents">
+                                                                    <object class="application.Town" id="Town9">
+                                                                     <void property="name">
+                                                                      <string>Cockleswhent</string>
+                                                                     </void>
+                                                                     <void property="x">
+                                                                      <int>424</int>
+                                                                     </void>
+                                                                     <void property="y">
+                                                                      <int>530</int>
+                                                                     </void>
+                                                                    </object>
+                                                                   </void>
+                                                                  </object>
+                                                                  <object idref="Edge27"/>
+                                                                 </void>
+                                                                 <void method="put">
+                                                                  <object idref="Node29"/>
+                                                                  <object idref="Edge37"/>
+                                                                 </void>
+                                                                </void>
+                                                                <void property="contents">
+                                                                 <object class="application.Town" id="Town10">
+                                                                  <void property="name">
+                                                                   <string>Summerhall</string>
+                                                                  </void>
+                                                                  <void property="x">
+                                                                   <int>619</int>
+                                                                  </void>
+                                                                  <void property="y">
+                                                                   <int>527</int>
+                                                                  </void>
+                                                                 </object>
+                                                                </void>
+                                                               </object>
+                                                               <object idref="Edge26"/>
+                                                              </void>
+                                                              <void method="put">
+                                                               <object idref="Node19"/>
+                                                               <object class="application.Edge" id="Edge41">
+                                                                <void property="danger">
+                                                                 <int>5</int>
+                                                                </void>
+                                                                <void property="dest">
+                                                                 <object idref="Node19"/>
+                                                                </void>
+                                                                <void property="distance">
+                                                                 <int>4</int>
+                                                                </void>
+                                                                <void property="ease">
+                                                                 <int>9</int>
+                                                                </void>
+                                                                <void property="source">
+                                                                 <object idref="Node20"/>
+                                                                </void>
+                                                                <void property="danger">
+                                                                 <int>5</int>
+                                                                </void>
+                                                                <void property="dest">
+                                                                 <object idref="Node19"/>
+                                                                </void>
+                                                                <void property="distance">
+                                                                 <int>4</int>
+                                                                </void>
+                                                                <void property="ease">
+                                                                 <int>9</int>
+                                                                </void>
+                                                                <void property="source">
+                                                                 <object idref="Node20"/>
+                                                                </void>
+                                                               </object>
+                                                              </void>
+                                                              <void method="put">
+                                                               <object idref="Node26"/>
+                                                               <object idref="Edge28"/>
+                                                              </void>
+                                                             </void>
+                                                             <void property="contents">
+                                                              <object class="application.Town" id="Town11">
+                                                               <void property="name">
+                                                                <string>Stonehelm</string>
+                                                               </void>
+                                                               <void property="x">
+                                                                <int>687</int>
+                                                               </void>
+                                                               <void property="y">
+                                                                <int>605</int>
+                                                               </void>
+                                                              </object>
+                                                             </void>
+                                                            </object>
+                                                            <object idref="Edge41"/>
+                                                           </void>
+                                                          </void>
+                                                          <void property="contents">
+                                                           <object class="application.Town" id="Town12">
+                                                            <void property="name">
+                                                             <string>Wendwater</string>
+                                                            </void>
+                                                            <void property="x">
+                                                             <int>708</int>
+                                                            </void>
+                                                            <void property="y">
+                                                             <int>442</int>
+                                                            </void>
+                                                           </object>
+                                                          </void>
+                                                         </object>
+                                                         <object idref="Edge20"/>
+                                                        </void>
+                                                       </void>
+                                                       <void property="contents">
+                                                        <object class="application.Town" id="Town13">
+                                                         <void property="name">
+                                                          <string>Storm&apos;s End</string>
+                                                         </void>
+                                                         <void property="x">
+                                                          <int>811</int>
+                                                         </void>
+                                                         <void property="y">
+                                                          <int>491</int>
+                                                         </void>
+                                                        </object>
+                                                       </void>
+                                                      </object>
+                                                      <object idref="Edge18"/>
+                                                     </void>
+                                                     <void method="put">
+                                                      <object idref="Node23"/>
+                                                      <object idref="Edge24"/>
+                                                     </void>
+                                                    </void>
+                                                    <void property="contents">
+                                                     <object class="application.Town" id="Town14">
+                                                      <void property="name">
+                                                       <string>Tarth</string>
+                                                      </void>
+                                                      <void property="x">
+                                                       <int>900</int>
+                                                      </void>
+                                                      <void property="y">
+                                                       <int>466</int>
+                                                      </void>
+                                                     </object>
+                                                    </void>
+                                                   </object>
+                                                   <object idref="Edge17"/>
+                                                  </void>
+                                                 </void>
+                                                 <void property="contents">
+                                                  <object class="application.Town" id="Town15">
+                                                   <void property="name">
+                                                    <string>Dragonstone</string>
+                                                   </void>
+                                                   <void property="x">
+                                                    <int>864</int>
+                                                   </void>
+                                                   <void property="y">
+                                                    <int>166</int>
+                                                   </void>
+                                                  </object>
+                                                 </void>
+                                                </object>
+                                                <object idref="Edge16"/>
+                                               </void>
+                                               <void method="put">
+                                                <object idref="Node19"/>
+                                                <object idref="Edge19"/>
+                                               </void>
+                                               <void method="put">
+                                                <object idref="Node29"/>
+                                                <object idref="Edge35"/>
+                                               </void>
+                                              </void>
+                                              <void property="contents">
+                                               <object class="application.Town" id="Town16">
+                                                <void property="name">
+                                                 <string>King&apos;s Landing</string>
+                                                </void>
+                                                <void property="x">
+                                                 <int>644</int>
+                                                </void>
+                                                <void property="y">
+                                                 <int>288</int>
+                                                </void>
+                                               </object>
+                                              </void>
+                                             </object>
+                                             <object idref="Edge14"/>
+                                            </void>
+                                            <void method="put">
+                                             <object idref="Node16"/>
+                                             <object idref="Edge15"/>
+                                            </void>
+                                            <void method="put">
+                                             <object idref="Node13"/>
+                                             <object class="application.Edge" id="Edge42">
+                                              <void property="danger">
+                                               <int>2</int>
+                                              </void>
+                                              <void property="dest">
+                                               <object idref="Node14"/>
+                                              </void>
+                                              <void property="distance">
+                                               <int>4</int>
+                                              </void>
+                                              <void property="ease">
+                                               <int>2</int>
+                                              </void>
+                                              <void property="source">
+                                               <object idref="Node13"/>
+                                              </void>
+                                              <void property="danger">
+                                               <int>2</int>
+                                              </void>
+                                              <void property="dest">
+                                               <object idref="Node14"/>
+                                              </void>
+                                              <void property="distance">
+                                               <int>4</int>
+                                              </void>
+                                              <void property="ease">
+                                               <int>2</int>
+                                              </void>
+                                              <void property="source">
+                                               <object idref="Node13"/>
+                                              </void>
+                                             </object>
+                                            </void>
+                                           </void>
+                                           <void property="contents">
+                                            <object class="application.Town" id="Town17">
+                                             <void property="name">
+                                              <string>Harrenhal</string>
+                                             </void>
+                                             <void property="x">
+                                              <int>566</int>
+                                             </void>
+                                             <void property="y">
+                                              <int>82</int>
+                                             </void>
+                                            </object>
+                                           </void>
+                                          </object>
+                                          <object idref="Edge42"/>
+                                         </void>
+                                         <void method="put">
+                                          <object idref="Node0"/>
+                                          <object class="application.Edge" id="Edge43">
+                                           <void property="danger">
+                                            <int>8</int>
+                                           </void>
+                                           <void property="dest">
+                                            <object idref="Node13"/>
+                                           </void>
+                                           <void property="distance">
+                                            <int>5</int>
+                                           </void>
+                                           <void property="ease">
+                                            <int>6</int>
+                                           </void>
+                                           <void property="source">
+                                            <object idref="Node0"/>
+                                           </void>
+                                          </object>
+                                         </void>
+                                         <void method="put">
+                                          <object idref="Node12"/>
+                                          <object class="application.Edge" id="Edge44">
+                                           <void property="danger">
+                                            <int>1</int>
+                                           </void>
+                                           <void property="dest">
+                                            <object idref="Node13"/>
+                                           </void>
+                                           <void property="distance">
+                                            <int>4</int>
+                                           </void>
+                                           <void property="ease">
+                                            <int>2</int>
+                                           </void>
+                                           <void property="source">
+                                            <object idref="Node12"/>
+                                           </void>
+                                           <void property="danger">
+                                            <int>1</int>
+                                           </void>
+                                           <void property="dest">
+                                            <object idref="Node13"/>
+                                           </void>
+                                           <void property="distance">
+                                            <int>4</int>
+                                           </void>
+                                           <void property="ease">
+                                            <int>2</int>
+                                           </void>
+                                           <void property="source">
+                                            <object idref="Node12"/>
+                                           </void>
+                                          </object>
+                                         </void>
+                                         <void method="put">
+                                          <object idref="Node11"/>
+                                          <object class="application.Edge" id="Edge45">
+                                           <void property="danger">
+                                            <int>3</int>
+                                           </void>
+                                           <void property="dest">
+                                            <object idref="Node11"/>
+                                           </void>
+                                           <void property="distance">
+                                            <int>3</int>
+                                           </void>
+                                           <void property="ease">
+                                            <int>3</int>
+                                           </void>
+                                           <void property="source">
+                                            <object idref="Node13"/>
+                                           </void>
+                                          </object>
+                                         </void>
+                                         <void method="put">
+                                          <object idref="Node28"/>
+                                          <object idref="Edge40"/>
+                                         </void>
+                                        </void>
+                                        <void property="contents">
+                                         <object class="application.Town" id="Town18">
+                                          <void property="name">
+                                           <string>Riverrun</string>
+                                          </void>
+                                          <void property="x">
+                                           <int>388</int>
+                                          </void>
+                                          <void property="y">
+                                           <int>26</int>
+                                          </void>
+                                         </object>
+                                        </void>
+                                       </object>
+                                       <object idref="Edge44"/>
+                                      </void>
+                                      <void method="put">
+                                       <object idref="Node11"/>
+                                       <object class="application.Edge" id="Edge46">
+                                        <void property="danger">
+                                         <int>2</int>
+                                        </void>
+                                        <void property="dest">
+                                         <object idref="Node11"/>
+                                        </void>
+                                        <void property="distance">
+                                         <int>2</int>
+                                        </void>
+                                        <void property="ease">
+                                         <int>2</int>
+                                        </void>
+                                        <void property="source">
+                                         <object idref="Node12"/>
+                                        </void>
+                                        <void property="danger">
+                                         <int>2</int>
+                                        </void>
+                                        <void property="dest">
+                                         <object idref="Node11"/>
+                                        </void>
+                                        <void property="distance">
+                                         <int>2</int>
+                                        </void>
+                                        <void property="ease">
+                                         <int>2</int>
+                                        </void>
+                                        <void property="source">
+                                         <object idref="Node12"/>
+                                        </void>
+                                       </object>
+                                      </void>
+                                     </void>
+                                     <void property="contents">
+                                      <object class="application.Town" id="Town19">
+                                       <void property="name">
+                                        <string>Ashemark</string>
+                                       </void>
+                                       <void property="x">
+                                        <int>204</int>
+                                       </void>
+                                       <void property="y">
+                                        <int>96</int>
+                                       </void>
+                                      </object>
+                                     </void>
+                                    </object>
+                                    <object idref="Edge46"/>
+                                   </void>
+                                   <void method="put">
+                                    <object idref="Node13"/>
+                                    <object idref="Edge45"/>
+                                   </void>
+                                  </void>
+                                  <void property="contents">
+                                   <object class="application.Town" id="Town20">
+                                    <void property="name">
+                                     <string>River Road</string>
+                                    </void>
+                                    <void property="x">
+                                     <int>270</int>
+                                    </void>
+                                    <void property="y">
+                                     <int>106</int>
+                                    </void>
+                                   </object>
+                                  </void>
+                                 </object>
+                                 <object idref="Edge11"/>
+                                </void>
+                               </void>
+                               <void property="contents">
+                                <object class="application.Town" id="Town21">
+                                 <void property="name">
+                                  <string>Goldroad</string>
+                                 </void>
+                                 <void property="x">
+                                  <int>274</int>
+                                 </void>
+                                 <void property="y">
+                                  <int>192</int>
+                                 </void>
+                                </object>
+                               </void>
+                              </object>
+                              <object idref="Edge9"/>
+                             </void>
+                             <void method="put">
+                              <object idref="Node5"/>
+                              <object class="application.Edge" id="Edge47">
+                               <void property="danger">
+                                <int>8</int>
+                               </void>
+                               <void property="dest">
+                                <object idref="Node9"/>
+                               </void>
+                               <void property="distance">
+                                <int>3</int>
+                               </void>
+                               <void property="ease">
+                                <int>8</int>
+                               </void>
+                               <void property="source">
+                                <object idref="Node5"/>
+                               </void>
+                              </object>
+                             </void>
+                             <void method="put">
+                              <object idref="Node28"/>
+                              <object idref="Edge34"/>
+                             </void>
                             </void>
-                            <void property="dest">
-                             <object idref="Node6"/>
-                            </void>
-                            <void property="distance">
-                             <int>3</int>
-                            </void>
-                            <void property="ease">
-                             <int>132</int>
-                            </void>
-                            <void property="source">
-                             <object idref="Node5"/>
-                            </void>
-                            <void property="danger">
-                             <int>2123</int>
-                            </void>
-                            <void property="dest">
-                             <object idref="Node6"/>
-                            </void>
-                            <void property="distance">
-                             <int>3</int>
-                            </void>
-                            <void property="ease">
-                             <int>132</int>
-                            </void>
-                            <void property="source">
-                             <object idref="Node5"/>
+                            <void property="contents">
+                             <object class="application.Town" id="Town22">
+                              <void property="name">
+                               <string>Riversource</string>
+                              </void>
+                              <void property="x">
+                               <int>260</int>
+                              </void>
+                              <void property="y">
+                               <int>246</int>
+                              </void>
+                             </object>
                             </void>
                            </object>
+                           <object idref="Edge8"/>
+                          </void>
+                          <void method="put">
+                           <object idref="Node8"/>
+                           <object idref="Edge5"/>
+                          </void>
+                          <void method="put">
+                           <object idref="Node27"/>
+                           <object idref="Edge30"/>
                           </void>
                          </void>
                          <void property="contents">
-                          <object class="application.Town" id="Town0">
+                          <object class="application.Town" id="Town23">
                            <void property="name">
-                            <string>f</string>
+                            <string>Highgarden</string>
                            </void>
                            <void property="x">
-                            <int>511</int>
+                            <int>253</int>
                            </void>
                            <void property="y">
-                            <int>282</int>
+                            <int>565</int>
                            </void>
                           </object>
                          </void>
                         </object>
-                        <object idref="Edge8"/>
+                        <object idref="Edge7"/>
+                       </void>
+                       <void method="put">
+                        <object idref="Node9"/>
+                        <object idref="Edge47"/>
+                       </void>
+                       <void method="put">
+                        <object idref="Node4"/>
+                        <object class="application.Edge" id="Edge48">
+                         <void property="danger">
+                          <int>1</int>
+                         </void>
+                         <void property="dest">
+                          <object idref="Node5"/>
+                         </void>
+                         <void property="distance">
+                          <int>2</int>
+                         </void>
+                         <void property="ease">
+                          <int>2</int>
+                         </void>
+                         <void property="source">
+                          <object idref="Node4"/>
+                         </void>
+                         <void property="danger">
+                          <int>1</int>
+                         </void>
+                         <void property="dest">
+                          <object idref="Node5"/>
+                         </void>
+                         <void property="distance">
+                          <int>2</int>
+                         </void>
+                         <void property="ease">
+                          <int>2</int>
+                         </void>
+                         <void property="source">
+                          <object idref="Node4"/>
+                         </void>
+                        </object>
                        </void>
                       </void>
                       <void property="contents">
-                       <object class="application.Town" id="Town1">
+                       <object class="application.Town" id="Town24">
                         <void property="name">
-                         <string>g</string>
+                         <string>Cornfield</string>
                         </void>
                         <void property="x">
-                         <int>305</int>
+                         <int>166</int>
                         </void>
                         <void property="y">
-                         <int>235</int>
+                         <int>314</int>
                         </void>
                        </object>
                       </void>
                      </object>
-                     <object idref="Edge6"/>
-                    </void>
-                    <void method="put">
-                     <object idref="Node0"/>
-                     <object idref="Edge0"/>
-                    </void>
-                    <void method="put">
-                     <object idref="Node3"/>
-                     <object class="application.Edge" id="Edge9">
-                      <void property="danger">
-                       <int>4</int>
-                      </void>
-                      <void property="dest">
-                       <object idref="Node3"/>
-                      </void>
-                      <void property="distance">
-                       <int>2</int>
-                      </void>
-                      <void property="ease">
-                       <int>34</int>
-                      </void>
-                      <void property="source">
-                       <object idref="Node4"/>
-                      </void>
-                      <void property="danger">
-                       <int>4</int>
-                      </void>
-                      <void property="dest">
-                       <object idref="Node3"/>
-                      </void>
-                      <void property="distance">
-                       <int>2</int>
-                      </void>
-                      <void property="ease">
-                       <int>34</int>
-                      </void>
-                      <void property="source">
-                       <object idref="Node4"/>
-                      </void>
-                     </object>
+                     <object idref="Edge48"/>
                     </void>
                    </void>
                    <void property="contents">
-                    <object class="application.Town" id="Town2">
+                    <object class="application.Town" id="Town25">
                      <void property="name">
-                      <string>a</string>
+                      <string>Crakehall</string>
                      </void>
                      <void property="x">
-                      <int>385</int>
+                      <int>66</int>
                      </void>
                      <void property="y">
-                      <int>28</int>
+                      <int>335</int>
                      </void>
                     </object>
                    </void>
                   </object>
-                  <object idref="Edge9"/>
+                  <object idref="Edge3"/>
                  </void>
                 </void>
                 <void property="contents">
-                 <object class="application.Town" id="Town3">
+                 <object class="application.Town" id="Town26">
                   <void property="name">
-                   <string>d</string>
+                   <string>Lannisport</string>
                   </void>
                   <void property="x">
-                   <int>773</int>
+                   <int>122</int>
                   </void>
                   <void property="y">
-                   <int>403</int>
+                   <int>220</int>
                   </void>
                  </object>
                 </void>
                </object>
-               <object idref="Edge4"/>
+               <object idref="Edge2"/>
+              </void>
+              <void method="put">
+               <object idref="Node10"/>
+               <object idref="Edge10"/>
+              </void>
+              <void method="put">
+               <object idref="Node12"/>
+               <object idref="Edge13"/>
               </void>
              </void>
              <void property="contents">
-              <object class="application.Town" id="Town4">
+              <object class="application.Town" id="Town27">
                <void property="name">
-                <string>c</string>
+                <string>Casterly Rock</string>
                </void>
                <void property="x">
-                <int>385</int>
+                <int>122</int>
                </void>
                <void property="y">
-                <int>632</int>
+                <int>194</int>
                </void>
               </object>
              </void>
             </object>
             <object idref="Edge1"/>
            </void>
-           <void method="put">
-            <object idref="Node4"/>
-            <object idref="Edge5"/>
-           </void>
-           <void method="put">
-            <object idref="Node6"/>
-            <object idref="Edge7"/>
-           </void>
-           <void method="put">
-            <object idref="Node0"/>
-            <object class="application.Edge" id="Edge10">
-             <void property="danger">
-              <int>3</int>
-             </void>
-             <void property="dest">
-              <object idref="Node1"/>
-             </void>
-             <void property="distance">
-              <int>3232</int>
-             </void>
-             <void property="ease">
-              <int>23</int>
-             </void>
-             <void property="source">
-              <object idref="Node0"/>
-             </void>
-             <void property="danger">
-              <int>3</int>
-             </void>
-             <void property="dest">
-              <object idref="Node1"/>
-             </void>
-             <void property="distance">
-              <int>3232</int>
-             </void>
-             <void property="ease">
-              <int>23</int>
-             </void>
-             <void property="source">
-              <object idref="Node0"/>
-             </void>
-            </object>
-           </void>
-           <void method="put">
-            <object idref="Node3"/>
-            <object idref="Edge3"/>
-           </void>
           </void>
           <void property="contents">
-           <object class="application.Town" id="Town5">
+           <object class="application.Town" id="Town28">
             <void property="name">
-             <string>e</string>
+             <string>Faircastle</string>
             </void>
             <void property="x">
-             <int>432</int>
+             <int>100</int>
             </void>
             <void property="y">
-             <int>409</int>
+             <int>104</int>
             </void>
            </object>
           </void>
          </object>
-         <object idref="Edge10"/>
-        </void>
-        <void method="put">
-         <object idref="Node2"/>
-         <object idref="Edge2"/>
-        </void>
-        <void method="put">
-         <object idref="Node4"/>
          <object idref="Edge0"/>
+        </void>
+        <void method="put">
+         <object idref="Node12"/>
+         <object idref="Edge12"/>
+        </void>
+        <void method="put">
+         <object idref="Node13"/>
+         <object idref="Edge43"/>
         </void>
        </void>
        <void property="contents">
-        <object class="application.Town" id="Town6">
+        <object class="application.Town" id="Town29">
          <void property="name">
-          <string>b</string>
+          <string>The Crag</string>
          </void>
          <void property="x">
-          <int>124</int>
+          <int>162</int>
          </void>
          <void property="y">
-          <int>219</int>
+          <int>56</int>
          </void>
         </object>
        </void>
       </object>
      </void>
      <void property="distance">
-      <int>213</int>
+      <int>2</int>
      </void>
      <void property="ease">
-      <int>231</int>
+      <int>2</int>
      </void>
      <void property="source">
-      <object idref="Node4"/>
+      <object idref="Node1"/>
      </void>
     </object>
-   </void>
-   <void method="add">
-    <object idref="Edge2"/>
-   </void>
-   <void method="add">
-    <object idref="Edge4"/>
-   </void>
-   <void method="add">
-    <object idref="Edge9"/>
-   </void>
-   <void method="add">
-    <object idref="Edge5"/>
-   </void>
-   <void method="add">
-    <object idref="Edge10"/>
-   </void>
-   <void method="add">
-    <object idref="Edge3"/>
    </void>
    <void method="add">
     <object idref="Edge1"/>
    </void>
    <void method="add">
+    <object idref="Edge2"/>
+   </void>
+   <void method="add">
+    <object idref="Edge3"/>
+   </void>
+   <void method="add">
+    <object idref="Edge48"/>
+   </void>
+   <void method="add">
+    <object idref="Edge12"/>
+   </void>
+   <void method="add">
+    <object idref="Edge46"/>
+   </void>
+   <void method="add">
+    <object idref="Edge45"/>
+   </void>
+   <void method="add">
+    <object idref="Edge44"/>
+   </void>
+   <void method="add">
+    <object idref="Edge11"/>
+   </void>
+   <void method="add">
+    <object idref="Edge13"/>
+   </void>
+   <void method="add">
+    <object idref="Edge10"/>
+   </void>
+   <void method="add">
     <object idref="Edge7"/>
+   </void>
+   <void method="add">
+    <object idref="Edge8"/>
+   </void>
+   <void method="add">
+    <object idref="Edge47"/>
+   </void>
+   <void method="add">
+    <object idref="Edge9"/>
+   </void>
+   <void method="add">
+    <object idref="Edge4"/>
    </void>
    <void method="add">
     <object idref="Edge6"/>
    </void>
    <void method="add">
-    <object idref="Edge8"/>
+    <object idref="Edge5"/>
+   </void>
+   <void method="add">
+    <object idref="Edge30"/>
+   </void>
+   <void method="add">
+    <object idref="Edge31"/>
+   </void>
+   <void method="add">
+    <object idref="Edge29"/>
+   </void>
+   <void method="add">
+    <object idref="Edge32"/>
+   </void>
+   <void method="add">
+    <object idref="Edge39"/>
+   </void>
+   <void method="add">
+    <object idref="Edge33"/>
+   </void>
+   <void method="add">
+    <object idref="Edge42"/>
+   </void>
+   <void method="add">
+    <object idref="Edge14"/>
+   </void>
+   <void method="add">
+    <object idref="Edge16"/>
+   </void>
+   <void method="add">
+    <object idref="Edge19"/>
+   </void>
+   <void method="add">
+    <object idref="Edge20"/>
+   </void>
+   <void method="add">
+    <object idref="Edge18"/>
+   </void>
+   <void method="add">
+    <object idref="Edge41"/>
+   </void>
+   <void method="add">
+    <object idref="Edge36"/>
+   </void>
+   <void method="add">
+    <object idref="Edge38"/>
+   </void>
+   <void method="add">
+    <object idref="Edge37"/>
+   </void>
+   <void method="add">
+    <object idref="Edge27"/>
+   </void>
+   <void method="add">
+    <object idref="Edge26"/>
+   </void>
+   <void method="add">
+    <object idref="Edge21"/>
+   </void>
+   <void method="add">
+    <object idref="Edge22"/>
+   </void>
+   <void method="add">
+    <object idref="Edge25"/>
+   </void>
+   <void method="add">
+    <object idref="Edge23"/>
+   </void>
+   <void method="add">
+    <object idref="Edge24"/>
+   </void>
+   <void method="add">
+    <object idref="Edge17"/>
+   </void>
+   <void method="add">
+    <object idref="Edge15"/>
+   </void>
+   <void method="add">
+    <object idref="Edge43"/>
+   </void>
+   <void method="add">
+    <object idref="Edge34"/>
+   </void>
+   <void method="add">
+    <object idref="Edge40"/>
+   </void>
+   <void method="add">
+    <object idref="Edge35"/>
+   </void>
+   <void method="add">
+    <object idref="Edge28"/>
    </void>
   </void>
   <void property="nodes">
    <void method="add">
-    <object idref="Node4"/>
+    <object idref="Node18"/>
    </void>
    <void method="add">
-    <object idref="Node0"/>
+    <object idref="Node20"/>
    </void>
    <void method="add">
-    <object idref="Node2"/>
+    <object idref="Node24"/>
    </void>
    <void method="add">
-    <object idref="Node3"/>
-   </void>
-   <void method="add">
-    <object idref="Node1"/>
+    <object idref="Node26"/>
    </void>
    <void method="add">
     <object idref="Node6"/>
    </void>
    <void method="add">
+    <object idref="Node8"/>
+   </void>
+   <void method="add">
+    <object idref="Node7"/>
+   </void>
+   <void method="add">
+    <object idref="Node4"/>
+   </void>
+   <void method="add">
     <object idref="Node5"/>
+   </void>
+   <void method="add">
+    <object idref="Node3"/>
+   </void>
+   <void method="add">
+    <object idref="Node2"/>
+   </void>
+   <void method="add">
+    <object idref="Node12"/>
+   </void>
+   <void method="add">
+    <object idref="Node13"/>
+   </void>
+   <void method="add">
+    <object idref="Node14"/>
+   </void>
+   <void method="add">
+    <object idref="Node16"/>
+   </void>
+   <void method="add">
+    <object idref="Node22"/>
+   </void>
+   <void method="add">
+    <object idref="Node28"/>
+   </void>
+   <void method="add">
+    <object idref="Node27"/>
+   </void>
+   <void method="add">
+    <object idref="Node1"/>
+   </void>
+   <void method="add">
+    <object idref="Node0"/>
+   </void>
+   <void method="add">
+    <object idref="Node29"/>
+   </void>
+   <void method="add">
+    <object idref="Node19"/>
+   </void>
+   <void method="add">
+    <object idref="Node25"/>
+   </void>
+   <void method="add">
+    <object idref="Node21"/>
+   </void>
+   <void method="add">
+    <object idref="Node23"/>
+   </void>
+   <void method="add">
+    <object idref="Node17"/>
+   </void>
+   <void method="add">
+    <object idref="Node15"/>
+   </void>
+   <void method="add">
+    <object idref="Node11"/>
+   </void>
+   <void method="add">
+    <object idref="Node10"/>
+   </void>
+   <void method="add">
+    <object idref="Node9"/>
    </void>
   </void>
   <void property="towns">
    <void method="add">
-    <object idref="Town2"/>
+    <object idref="Town13"/>
    </void>
    <void method="add">
-    <object idref="Town6"/>
+    <object idref="Town11"/>
    </void>
    <void method="add">
-    <object idref="Town4"/>
+    <object idref="Town10"/>
    </void>
    <void method="add">
-    <object idref="Town3"/>
+    <object idref="Town8"/>
    </void>
    <void method="add">
-    <object idref="Town5"/>
+    <object idref="Town23"/>
    </void>
    <void method="add">
     <object idref="Town0"/>
    </void>
    <void method="add">
     <object idref="Town1"/>
+   </void>
+   <void method="add">
+    <object idref="Town25"/>
+   </void>
+   <void method="add">
+    <object idref="Town24"/>
+   </void>
+   <void method="add">
+    <object idref="Town26"/>
+   </void>
+   <void method="add">
+    <object idref="Town27"/>
+   </void>
+   <void method="add">
+    <object idref="Town19"/>
+   </void>
+   <void method="add">
+    <object idref="Town18"/>
+   </void>
+   <void method="add">
+    <object idref="Town17"/>
+   </void>
+   <void method="add">
+    <object idref="Town15"/>
+   </void>
+   <void method="add">
+    <object idref="Town3"/>
+   </void>
+   <void method="add">
+    <object idref="Town6"/>
+   </void>
+   <void method="add">
+    <object idref="Town7"/>
+   </void>
+   <void method="add">
+    <object idref="Town28"/>
+   </void>
+   <void method="add">
+    <object idref="Town29"/>
+   </void>
+   <void method="add">
+    <object idref="Town5"/>
+   </void>
+   <void method="add">
+    <object idref="Town12"/>
+   </void>
+   <void method="add">
+    <object idref="Town9"/>
+   </void>
+   <void method="add">
+    <object idref="Town4"/>
+   </void>
+   <void method="add">
+    <object idref="Town2"/>
+   </void>
+   <void method="add">
+    <object idref="Town14"/>
+   </void>
+   <void method="add">
+    <object idref="Town16"/>
+   </void>
+   <void method="add">
+    <object idref="Town20"/>
+   </void>
+   <void method="add">
+    <object idref="Town21"/>
+   </void>
+   <void method="add">
+    <object idref="Town22"/>
    </void>
   </void>
  </object>

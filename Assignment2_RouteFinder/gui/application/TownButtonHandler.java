@@ -13,7 +13,7 @@ class TownButtonHandler implements EventHandler<ActionEvent> {
     
     @Override
     public void handle(ActionEvent event) {
-        System.out.println(town);
+        //System.out.println(town);
         //controller.selectingPath(town);
     }
 }

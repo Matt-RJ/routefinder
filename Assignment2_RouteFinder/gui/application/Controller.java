@@ -1,4 +1,6 @@
 package application;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
@@ -16,8 +18,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
 
 
+/*
+ * @author Adam Smith
+ */
 
 public class Controller {
 
@@ -111,6 +117,32 @@ public class Controller {
     @FXML
     private TextArea waypointListTexBox;
     
+    @FXML
+    private TextField danger;
+
+    @FXML
+    private TextField ease;
+
+    @FXML
+    private TextField distance;
+    
+    @FXML
+    private Button previousRouteButton;
+
+    @FXML
+    private Button nextRouteButton;
+    
+    @FXML
+    private Label permutationNumberLabel;
+    
+    // a list of waypoints to be used.
+    private ArrayList<Town> townsToGoThrough = new ArrayList<Town>();
+    
+    // a list of all possible permutations.
+    private ArrayList<ArrayList<Node<?>>> allPermutations = new ArrayList<ArrayList<Node<?>>>();
+    
+    private int currentPermutation = 0;
+    
     /**
 	 * Grabs the x,y value of the mouse when called, converting from the original double to int (for Town class)
 	 * and finally to string to be displayed in text field.
@@ -122,50 +154,7 @@ public class Controller {
     	Main.graph.getTowns().add(town);
     	Main.graph.addNode(new Node<Town>(town));
     	
-    	// TODO: create a new town button at x,y
-    	Button button = new Button();
-    	button.setPrefHeight(townButton.getHeight());
-    	button.setPrefWidth(townButton.getWidth());
-    	button.setLayoutX(town.getX()-townButton.getHeight()/2);
-    	button.setLayoutY(town.getY()-townButton.getWidth()/2);
-    	button.setOpacity(0.5);
-    	button.setText(town.getName());
-    	
-    	button.setOnMouseEntered(new EventHandler<MouseEvent>() {
-    		public void handle(MouseEvent event) {
-    			hoverOverTownName.setText(town.getName());
-    			hoverOverTownName.setLayoutX(button.getLayoutX()+25);
-    			hoverOverTownName.setLayoutY(button.getLayoutY()-25);
-    			hoverOverTownName.setVisible(true);
-    		}
-    	});
-    	
-    	button.setOnMouseExited(new EventHandler<MouseEvent>() {
-    		public void handle(MouseEvent event) {
-    			hoverOverTownName.setVisible(false);
-    		}
-    	});
-    	
-    	button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-    		
-    		public void handle(MouseEvent event) {
-    			if (connectTownsPane.visibleProperty().get()) {
-    				townSelectedForConnection(town);
-    			}
-    			else {
-    				if (fromTownName.getText().length() == 0) {
-    					fromTownName.setText(town.getName());
-    				} else if (toTownName.getText().length() == 0) {
-    					toTownName.setText(town.getName());
-    				} else {
-    					
-    					waypointListTexBox.setText(waypointListTexBox.getText()+", \n"+town.getName());
-    				}
-    			}
-    		}
-    	});
-    	
-    	mapPane.getChildren().add(button);
+    	createNewTownButton(town);
     	clearAddTownTextBoxes();
     }
    
@@ -184,12 +173,33 @@ public class Controller {
 	 * it does the same for the second text field. This process is to get the Node object
 	 * to get the NodeID and connect the two Nodes...
 	 * @param town - The town the button represents which was pressed.
-	 */
+	 */ 
+    
     @FXML
     void connectTwoTowns(MouseEvent event) {
     	if (firstTownConnect.getText().length() == 0 || secondTownConnect.getText().length() == 0) return;
-    	Main.graph.connect(Main.graph.getNodeByTownName(firstTownConnect.getText()).getNodeID(), Main.graph.getNodeByTownName(secondTownConnect.getText()).getNodeID(), new Edge());
-					
+    	Node<?> startTown =  Main.graph.getNodeByTownName(firstTownConnect.getText());
+    	Node<?> endTown = Main.graph.getNodeByTownName(secondTownConnect.getText());
+    	
+    	// create a new edge with ease, danger and distance supplied from GUI.
+    	Edge edge = new Edge(Integer.parseInt(distance.getText()), Integer.parseInt(ease.getText()), Integer.parseInt(danger.getText()));
+    	edge.setSource(startTown);
+    	edge.setDest(endTown);
+    	
+    	// connect the two towns and add a line between them.
+    	addLineBetweenConnectedTowns(startTown, endTown);
+    	Main.graph.connect(startTown, endTown, edge);
+    	clearConnectTownTextBoxes();
+    }
+    
+    public void addLineBetweenConnectedTowns(Node<?> startTown, Node<?> endTown) {
+    	Line edgeLine = new Line();
+    	edgeLine.setStrokeWidth(3);
+    	edgeLine.setStartX(((Town) startTown.getContents()).getX());
+    	edgeLine.setStartY(((Town) startTown.getContents()).getY());
+    	edgeLine.setEndX(((Town) endTown.getContents()).getX());
+    	edgeLine.setEndY(((Town) endTown.getContents()).getY());
+    	mapPane.getChildren().add(edgeLine);
     }
     
     /**
@@ -217,23 +227,26 @@ public class Controller {
     	addTownY.setText("");
     }
     
+    public void clearConnectTownTextBoxes() {
+    	firstTownConnect.setText("");
+    	secondTownConnect.setText("");
+    	danger.setText("");
+    	ease.setText("");
+    	distance.setText("");
+    }
+    
     @FXML
     void connectTownsClicked(MouseEvent event) {
     	if (connectTownsPane.visibleProperty().get()) {
     		connectTownsPane.setVisible(false);
     		connectTownsButton.setText("Connect Towns");
     		addTownsButton.setVisible(true);
-    		clearAddTownTextBoxes();
+    		clearConnectTownTextBoxes();
     	} else {
     		connectTownsPane.setVisible(true);
     		connectTownsButton.setText("Finish");
     		addTownsButton.setVisible(false);
     	}
-    }
-    
-    @FXML
-    void connectTheseTownsClicked(MouseEvent event) {
-    	
     }
     
     @FXML
@@ -243,7 +256,36 @@ public class Controller {
 
     @FXML
     void findRouteButtonClicked(MouseEvent event) {
+    	pathListTextBox.setText("");
     	
+    	// removing any data relating to permutations and previous routes displayed
+    	previousRouteButton.setDisable(true);
+    	nextRouteButton.setDisable(true);
+    	permutationNumberLabel.setText("");
+    	allPermutations.clear();
+    	
+    	// declaring the start and end town if selected.
+    	if (fromTownName.getText().length() == 0 || toTownName.getText().length() == 0) return;
+    	Node<?> startTown =  Main.graph.getNodeByTownName(fromTownName.getText());
+    	Node<?> endTown = Main.graph.getNodeByTownName(toTownName.getText());
+    	
+    	// determining which path type is selected via radio buttons.
+    	String pathType = "";
+    	if (distanceRadio.isSelected()) pathType = "distance";
+    	else if (easeRadio.isSelected()) pathType = "ease";
+    	else pathType = "danger";
+    	
+    	// Highlighting and listing the edges and town names.
+    	highlightAndListRoute(Main.graph.findShortestPath(startTown, endTown, pathType));
+    	
+    }
+    
+    public void highlightAndListRoute(ArrayList<Node<?>> path) {
+    	pathListTextBox.setText("");
+    	for (int i = 0; i < path.size(); i++) {
+    		Town townFromNode = ((Town) path.get(i).getContents());
+    		pathListTextBox.setText(pathListTextBox.getText()+townFromNode.getName()+", \n");
+    	}
     }
     
     @FXML
@@ -264,16 +306,6 @@ public class Controller {
     	}
     }
     
-    public void selectingPath(String town) {
-//    	if (fromTownName.getText().length() == 0) {
-//    		fromTownName.setText(town);
-//    	} else if (toTownName.getText().length() == 0) {
-//    		toTownName.setText(town);
-//    	} else {
-//    		throughTownName.setText(town);
-//    	}
-    }
-    
     public void createTownButtons() {
     	mapPane.getChildren().forEach(node -> {
     		if (node.getOpacity() < 0.3) {
@@ -285,8 +317,158 @@ public class Controller {
     
     @FXML
     void cancelButtonClicked(MouseEvent event) {
-    	fromTownName.setText("");
-    	toTownName.setText("");
+    	cleanState();
     }
     
+    public void cleanState() {
+    	fromTownName.setText("");
+    	toTownName.setText("");
+    	townsToGoThrough.clear();
+    	waypointListTexBox.setText("");
+    	pathListTextBox.setText("");
+    	previousRouteButton.setDisable(true);
+    	nextRouteButton.setDisable(true);
+    	allPermutations.clear();
+    }
+    
+    public void createNewTownButton(Town town) {
+    	
+    	Button button = new Button();
+    	button.setPrefHeight(townButton.getHeight());
+    	button.setPrefWidth(townButton.getWidth());
+    	button.setLayoutX(town.getX()-townButton.getHeight()/2);
+    	button.setLayoutY(town.getY()-townButton.getWidth()/2);
+    	button.setOpacity(0.5);
+    	button.setText(town.getName());
+    	
+    	// When a town button is hovered over.
+    	button.setOnMouseEntered(new EventHandler<MouseEvent>() {
+    		public void handle(MouseEvent event) {
+    			hoverOverTownName.setText(town.getName());
+    			hoverOverTownName.setLayoutX(button.getLayoutX()+25);
+    			hoverOverTownName.setLayoutY(button.getLayoutY()-25);
+    			hoverOverTownName.setVisible(true);
+    		}
+    	});
+    	
+    	// When a  town button is hovered over AND THEN EXITED.
+    	button.setOnMouseExited(new EventHandler<MouseEvent>() {
+    		public void handle(MouseEvent event) {
+    			hoverOverTownName.setVisible(false);
+    		}
+    	});
+    	
+    	
+    	/**
+    	 * When a town button is clicked, it will deal with it in a number of ways
+    	 * depending on what the state of the program is. 
+    	 */
+    	button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    		
+    		public void handle(MouseEvent event) {
+    			if (connectTownsPane.visibleProperty().get()) {
+    				townSelectedForConnection(town);
+    			}
+    			else {
+    				// first town selected (start point)
+    				if (fromTownName.getText().length() == 0) {
+    					fromTownName.setText(town.getName());
+    				// second town selected (end point)
+    				} else if (toTownName.getText().length() == 0) {
+    					toTownName.setText(town.getName());
+    				} else {
+    					// the next down selected will be a waypoint. If it already exists as a waypoint it is not added again.
+    					if (!townsToGoThrough.contains(town)) {
+    						townsToGoThrough.add(town);
+    						waypointListTexBox.setText(waypointListTexBox.getText()+town.getName()+", \n");
+    					}
+    				}
+    			}
+    		}
+    	});
+    	
+    	mapPane.getChildren().add(button);
+    }
+    
+    @FXML
+    void newButtonClicked(ActionEvent event) {
+    	Main.graph = new Graph();
+    	clearMapPane();
+    	
+    }
+    
+    @FXML
+    void quitButtonClicked(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saveButtonClicked(ActionEvent event) throws IOException {
+    	Main.saveGraph();
+    }
+    
+    @FXML
+    void loadButtonClicked(ActionEvent event) throws FileNotFoundException, IOException {
+    	cleanState();
+    	Main.loadGraph();
+    	ArrayList<Node<?>> nodes = Main.graph.getNodes();
+    	ArrayList<Edge> edges = Main.graph.getEdges();
+    	clearMapPane();
+    	
+    	for (int i = 0; i < nodes.size(); i++) {
+    		createNewTownButton(((Town) nodes.get(i).getContents()));
+    	}
+    	
+    	for (int i = 0; i < edges.size(); i++) {
+    		addLineBetweenConnectedTowns(edges.get(i).getSource(), edges.get(i).getDest());
+    	}
+    }
+    
+    public void clearMapPane() {
+    	ArrayList<Object> nodesToRemove = new ArrayList<>();
+    	
+    	for (int i = 0; i < mapPane.getChildren().size(); i++) {
+    		if (mapPane.getChildren().get(i) instanceof Button || mapPane.getChildren().get(i) instanceof Line) {
+    			nodesToRemove.add(mapPane.getChildren().get(i));
+    		}
+    	}
+    	mapPane.getChildren().removeAll(nodesToRemove);
+    }
+    
+    @FXML
+    void previousRouteButtonClicked(MouseEvent event) {
+    	// a condition to allow wrapping the viewing of permutations
+    	if (currentPermutation == 0) {
+    		currentPermutation = allPermutations.size();
+    	}
+    	
+    	currentPermutation = currentPermutation - 1;
+    	permutationNumberLabel.setText(Integer.toString(currentPermutation+1));
+    	highlightAndListRoute(allPermutations.get(currentPermutation));
+    }
+    
+    @FXML
+    void nextRouteButtonClicked(MouseEvent event) {
+    	// a condition to allow wrapping the viewing of permutations
+    	if (currentPermutation + 1 > allPermutations.size() - 1) {
+    		currentPermutation = -1;
+    	}
+    	
+    	currentPermutation = currentPermutation + 1;
+    	permutationNumberLabel.setText(Integer.toString(currentPermutation+1));
+    	highlightAndListRoute(allPermutations.get(currentPermutation));
+    }
+    
+    @FXML
+    void findAllRouteButtonClicked(MouseEvent event) {
+    	if (fromTownName.getText().length() == 0 || toTownName.getText().length() == 0) return;
+    	Node<?> startTown =  Main.graph.getNodeByTownName(fromTownName.getText());
+    	Node<?> endTown = Main.graph.getNodeByTownName(toTownName.getText());
+    	
+    	permutationNumberLabel.setText(Integer.toString(1));
+    	allPermutations = Main.graph.findPathPermutations(startTown, endTown, new ArrayList<Node<?>>());
+    	highlightAndListRoute(allPermutations.get(0));
+    	previousRouteButton.setDisable(false);
+    	nextRouteButton.setDisable(false);
+    }
 }

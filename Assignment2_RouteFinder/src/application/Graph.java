@@ -1,33 +1,22 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
- * Manages the entire graph - including the nodes, edges, and matrix.
- * 
+ * Manages an entire graph - including the nodes, edges, and matrix.
+ * The graph
  * @author Mantas Rajackas
  *
  */
 public class Graph {
-	private AdjacencyMatrix matrix = null;
 	private ArrayList<Node<?>> nodes = new ArrayList<>();
 	private ArrayList<Edge> edges = new ArrayList<>();
 	private ArrayList<Town> towns = new ArrayList<>();
 
 	public Graph() {
 		
-	}
-	
-	public Graph(int size) {
-		this.matrix = new AdjacencyMatrix(size);
-	}
-	
-	public AdjacencyMatrix getMatrix() {
-		return matrix;
-	}
-	public void setMatrix(AdjacencyMatrix matrix) {
-		this.matrix = matrix;
 	}
 
 	public ArrayList<Node<?>> getNodes() {
@@ -53,35 +42,49 @@ public class Graph {
 	}
 
 	/**
-	 * Adds a new node into the graph.
+	 * Adds a new node into the graph. Ignores duplicate nodes.
 	 * @param node - The node to add.
 	 */
 	public void addNode(Node<?> node) {
-		node.setNodeID(matrix.getNodeCount());
-		this.matrix.setNodeCount(matrix.getNodeCount()+1);
+		for (Node<?> n : this.nodes) {
+			if (n.equals(node)) return;
+		}
 		this.nodes.add(node);
-		// TODO: Increase matrix size
 	}
 	
 	/**
 	 * Connects two nodes that are already in the graph.
-	 * @param source - Source node's ID.
-	 * @param dest - Destination node's ID.
+	 * @param source - Source node.
+	 * @param dest - Destination node.
 	 * @param edge - The Edge that connects the nodes.
 	 */
-	public void connect(int source, int dest, Edge edge) {
-		this.getMatrix().connect(source, dest, edge);
+	public void connect(Node<?> source, Node<?> dest, Edge edge) {
+		for (Edge e: this.edges) {
+			if (e.equals(edge)) return; // Checks for duplicate edges
+		}
+		
+		edge.setSource(source);
+		edge.setDest(dest);
+		
+		// Updating adjacency maps for both nodes
+		HashMap<Node<?>, Edge> sourceMap = source.getAdjMap();
+		HashMap<Node<?>, Edge> destMap = dest.getAdjMap();
+		sourceMap.put(dest, edge);
+		destMap.put(source, edge);
+		
+		this.edges.add(edge);
+		// TODO: Test
 	}
 	
 	/**
 	 * Gets the Edge that connects two nodes.
-	 * @param sourceNodeID - The source node's ID.
-	 * @param destNodeID - The destination node's ID.
+	 * @param source - The source node.
+	 * @param dest - The destination node.
 	 * @return The Edge between the two nodes.
 	 */
-	public Edge getEdge(int sourceNodeID, int destNodeID) {
-		// TODO: Test this method
-		return (Edge) this.matrix.getAdjMat()[sourceNodeID][destNodeID];
+	public Edge getEdge(Node<?> source, Node<?> dest) {
+		// TODO: Test
+		return source.getAdjMap().get(dest);
 	}
 	
 	/**
@@ -90,7 +93,6 @@ public class Graph {
 	 * @return The node in the graph which holds a town with the required name.
 	 */
 	public Node<?> getNodeByTownName(String name) {
-		// TODO: Test this method
 		for (Node<?> n : this.nodes) {
 			if (((Town) n.getContents()).getName().equals(name)) return n;
 		}
@@ -99,49 +101,104 @@ public class Graph {
 	
 	// PATHFINDING
 	
+	public ArrayList<ArrayList<Node<?>>> findPathPermutations(Node<?> startNode, Node<?> lookingFor, ArrayList<Node<?>> encountered) {
+		
+		// TODO
+		
+		ArrayList<ArrayList<Node<?>>> result = null, temp2;
+		
+		if (startNode.equals(lookingFor)) {
+			ArrayList<Node<?>> temp = new ArrayList<>();
+			temp.add(startNode);
+			result = new ArrayList<>();
+			result.add(temp);
+			return result;
+		}
+		
+		if (encountered == null) encountered = new ArrayList<>();
+		encountered.add(startNode);
+		
+		for (Node<?> adjNode : startNode.getAdjMap().keySet()) {
+			if (!encountered.contains(adjNode)) {
+				temp2 = findPathPermutations(adjNode, lookingFor, new ArrayList<>(encountered));
+				
+				if (temp2 != null) {
+					for (ArrayList<Node<?>> x : temp2) {
+						x.add(0,startNode);
+					}
+					if (result == null) result = temp2;
+					else result.addAll(temp2);
+				}
+			}
+		}
+		
+		return result;
+	}
+	
 	/** 
 	 * Finds the shortest route from the nodes 'start' to 'lookingfor', based
 	 * on a comparator c, which uses edge values.
-	 * @param start - The node to start on.
+	 * @param startNode - The node to start on.
 	 * @param lookingFor - The node to end on.
-	 * @param c - The comparator which determines the value to use as a cost for traveling paths.
+	 * @param weightType - Determines what Edge weight to use, can be "distance", "ease", or "danger".
 	 * @return An array of Node objects, in order from start to finish.
 	 */
-	public ArrayList<Node<?>> findPath(
-			Node<?> startNode,Node<?> lookingFor, Comparator<Edge> c) {
-		 
-		ArrayList<Node<?>> path = new ArrayList<Node<?>>(); // Contains the final path
-		int pathCost = 0;
-		ArrayList<Node<?>> encountered = new ArrayList<Node<?>>();
-		ArrayList<Node<?>> unencountered = new ArrayList<Node<?>>();
+	public ArrayList<Node<?>> findShortestPath(Node<?> startNode, Node<?> lookingFor, String weightType) {
+		// TODO: Only uses the distance for now. Update to allow the use of any variable in an Edge
+		
+		ArrayList<Node<?>> path = new ArrayList<>(); // Will contain the final path
+		ArrayList<Node<?>> encountered = new ArrayList<>(); // Nodes already visited
+		ArrayList<Node<?>> unencountered = new ArrayList<>(); // Nodes yet to visit
 		
 		startNode.setCost(0);
 		unencountered.add(startNode);
 		Node<?> currentNode;
 		
-		do { // Loops through encountered list until it's empty
+		do { // Until no more nodes left in unencountered
+			currentNode = unencountered.remove(0); // Gets the next unencountered node as current node
+			encountered.add(currentNode);		   // and makes it encountered
 			
-			currentNode = unencountered.remove(0);
-			encountered.add(currentNode); // Adds current node to encountered list
-			
-			if (currentNode.getContents().equals(lookingFor)) { // TODO: Change the conditional here to suit sys
-				// TODO: Reassemble path and return it
+			if (currentNode.equals(lookingFor)) { // Destination node found - Assemble path and return it
+				path.add(currentNode);
+				// TODO: Consider adding a way to get the cost of the entire path
 				
-				path.add(lookingFor); // Add the destination node to the path list first.
-				pathCost = currentNode.getCost();
-				
-				while (currentNode != startNode) {
+				while(currentNode != startNode) {
 					boolean foundPrevPathNode = false;
 					for (Node<?> n : encountered) {
-						// TODO
+						for (Node<?> adjNode : n.getAdjMap().keySet()) { // For each node connected to n
+							// TODO
+							if (adjNode == currentNode && currentNode.getCost() 
+									- n.getAdjMap().get(adjNode).getWeight(weightType) == n.getCost()) {
+								path.add(0, n);
+								currentNode = n;
+								foundPrevPathNode = true;
+								break;
+							}
+							if (foundPrevPathNode) break;
+						}
 					}
 				}
 				
+				// Resets node costs to default
+				for (Node<?> n : encountered) n.setCost(Integer.MAX_VALUE);
+				for (Node<?> n : unencountered) n.setCost(Integer.MAX_VALUE);
+				
+				return path; // Shortest path found
 			}
 			
-		} while (!unencountered.isEmpty());
-		
-		return null; // No valid path found
+			// Destination node not found yet
+			HashMap<Node<?>,Edge> adjMap = currentNode.getAdjMap();
+			for (Node<?> n : adjMap.keySet()) { // For each adjacent node in currentNode
+				if (!encountered.contains(n)) {
+					
+					// TODO: The line below uses getDistance instead a chosen method
+					n.setCost(Integer.min(n.getCost(), currentNode.getCost()+adjMap.get(n).getWeight(weightType)));
+					unencountered.add(n);
+				}
+			}
+			Collections.sort(unencountered, (n1,n2)->n1.getCost()-n2.getCost());
+		}
+		while (!unencountered.isEmpty());
+		return null; // No path found
 	}
-	
 }

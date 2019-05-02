@@ -18,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 
 
@@ -136,12 +137,14 @@ public class Controller {
     private Label permutationNumberLabel;
     
     // a list of waypoints to be used.
-    private ArrayList<Town> townsToGoThrough = new ArrayList<Town>();
+    private ArrayList<Node<?>> townsToGoThrough = new ArrayList<Node<?>>();
     
     // a list of all possible permutations.
     private ArrayList<ArrayList<Node<?>>> allPermutations = new ArrayList<ArrayList<Node<?>>>();
     
     private int currentPermutation = 0;
+    
+    private ArrayList<Line> highlightedPathLines = new ArrayList<Line>();
     
     /**
 	 * Grabs the x,y value of the mouse when called, converting from the original double to int (for Town class)
@@ -194,12 +197,14 @@ public class Controller {
     
     public void addLineBetweenConnectedTowns(Node<?> startTown, Node<?> endTown) {
     	Line edgeLine = new Line();
+    	edgeLine.setStyle("-fx-view-order: -100");
     	edgeLine.setStrokeWidth(3);
     	edgeLine.setStartX(((Town) startTown.getContents()).getX());
     	edgeLine.setStartY(((Town) startTown.getContents()).getY());
     	edgeLine.setEndX(((Town) endTown.getContents()).getX());
     	edgeLine.setEndY(((Town) endTown.getContents()).getY());
     	mapPane.getChildren().add(edgeLine);
+    	//edgeLine.toBack();
     }
     
     /**
@@ -276,13 +281,42 @@ public class Controller {
     	else pathType = "danger";
     	
     	// Highlighting and listing the edges and town names.
-    	highlightAndListRoute(Main.graph.findShortestPath(startTown, endTown, pathType));
     	
+    	if (townsToGoThrough.size() > 0 ) {
+    		highlightAndListRoute(Main.graph.findShortestPathWithWaypoints(startTown, endTown, pathType, townsToGoThrough));
+    	} else {
+    		highlightAndListRoute(Main.graph.findShortestPath(startTown, endTown, pathType));
+    	}
     }
     
     public void highlightAndListRoute(ArrayList<Node<?>> path) {
     	pathListTextBox.setText("");
+    	
+    	// remove old highlighted path and clear the highlighted path list.
+    	for (int i = 0; i < highlightedPathLines.size(); i++) {
+    		mapPane.getChildren().remove(highlightedPathLines.get(i));
+    	}
+    	highlightedPathLines.clear();
+    	
     	for (int i = 0; i < path.size(); i++) {
+    		
+    		Line edgeLine = new Line();
+    		edgeLine.setStyle("-fx-stroke: red");
+    		highlightedPathLines.add(edgeLine);
+        	edgeLine.setStrokeWidth(5);
+        	
+        	// if there's no next node to add a line between
+        	if (i == path.size()-1) {
+        		return;
+        	}
+        	
+        	edgeLine.setStartX((((Town) path.get(i).getContents()).getX()));
+        	edgeLine.setStartY((((Town) path.get(i).getContents()).getY()));
+        	
+        	edgeLine.setEndX((((Town) path.get(i+1).getContents()).getX()));
+        	edgeLine.setEndY((((Town) path.get(i+1).getContents()).getY()));
+        	mapPane.getChildren().add(edgeLine);
+    		
     		Town townFromNode = ((Town) path.get(i).getContents());
     		pathListTextBox.setText(pathListTextBox.getText()+townFromNode.getName()+", \n");
     	}
@@ -338,7 +372,7 @@ public class Controller {
     	button.setPrefWidth(townButton.getWidth());
     	button.setLayoutX(town.getX()-townButton.getHeight()/2);
     	button.setLayoutY(town.getY()-townButton.getWidth()/2);
-    	button.setOpacity(0.5);
+    	button.setStyle("-fx-view-order: 100");
     	button.setText(town.getName());
     	
     	// When a town button is hovered over.
@@ -379,7 +413,7 @@ public class Controller {
     				} else {
     					// the next down selected will be a waypoint. If it already exists as a waypoint it is not added again.
     					if (!townsToGoThrough.contains(town)) {
-    						townsToGoThrough.add(town);
+    						townsToGoThrough.add(Main.graph.getNodeByTownName(town.getName()));
     						waypointListTexBox.setText(waypointListTexBox.getText()+town.getName()+", \n");
     					}
     				}
@@ -388,6 +422,7 @@ public class Controller {
     	});
     	
     	mapPane.getChildren().add(button);
+    	button.toFront();
     }
     
     @FXML

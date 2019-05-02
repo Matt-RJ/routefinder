@@ -247,5 +247,10 @@
             <Font size="25.0" />
          </font>
       </Label>
+      <Label fx:id="hoverOverTextBoxOffMap" layoutX="54.0" layoutY="894.0" prefHeight="56.0" prefWidth="431.0" style="-fx-border-color: grey;" textAlignment="CENTER" textFill="#ff3535">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

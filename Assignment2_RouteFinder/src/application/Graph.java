@@ -144,7 +144,6 @@ public class Graph {
 	 * @return An array of Node objects, in order from start to finish.
 	 */
 	public ArrayList<Node<?>> findShortestPath(Node<?> startNode, Node<?> lookingFor, String weightType) {
-		// TODO: Only uses the distance for now. Update to allow the use of any variable in an Edge
 		
 		ArrayList<Node<?>> path = new ArrayList<>(); // Will contain the final path
 		ArrayList<Node<?>> encountered = new ArrayList<>(); // Nodes already visited
@@ -160,7 +159,6 @@ public class Graph {
 			
 			if (currentNode.equals(lookingFor)) { // Destination node found - Assemble path and return it
 				path.add(currentNode);
-				// TODO: Consider adding a way to get the cost of the entire path
 				
 				while(currentNode != startNode) {
 					boolean foundPrevPathNode = false;
@@ -191,7 +189,6 @@ public class Graph {
 			for (Node<?> n : adjMap.keySet()) { // For each adjacent node in currentNode
 				if (!encountered.contains(n)) {
 					
-					// TODO: The line below uses getDistance instead a chosen method
 					n.setCost(Integer.min(n.getCost(), currentNode.getCost()+adjMap.get(n).getWeight(weightType)));
 					unencountered.add(n);
 				}

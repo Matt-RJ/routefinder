@@ -136,6 +136,9 @@ public class Controller {
     @FXML
     private Label permutationNumberLabel;
     
+    @FXML
+    private Label hoverOverTextBoxOffMap;
+    
     // a list of waypoints to be used.
     private ArrayList<Node<?>> townsToGoThrough = new ArrayList<Node<?>>();
     
@@ -213,6 +216,7 @@ public class Controller {
     			hoverOverTownName.setLayoutY(event.getY()-25);
     			hoverOverTownName.setVisible(true);
     			hoverOverTownName.toFront();
+    			hoverOverTextBoxOffMap.setText("DA: "+thisEdge.getDanger()+" DI: "+thisEdge.getDistance()+" EA: "+thisEdge.getEase());
     		}
     	});
     	
@@ -220,6 +224,7 @@ public class Controller {
     	edgeLine.setOnMouseExited(new EventHandler<MouseEvent>() {
     		public void handle(MouseEvent event) {
     			hoverOverTownName.setVisible(false);
+    			hoverOverTextBoxOffMap.setText("");
     		}
     	});
     	
@@ -379,6 +384,10 @@ public class Controller {
     	highlightedPathLines.clear();
     }
     
+    /**
+	 * clears textboxes and resets permutations.
+	 * @param event - The 'mapPane' being clicked.
+	 */
     public void cleanState() {
     	fromTownName.setText("");
     	toTownName.setText("");
@@ -408,6 +417,7 @@ public class Controller {
     			hoverOverTownName.setLayoutY(button.getLayoutY()-25);
     			hoverOverTownName.setVisible(true);
     			hoverOverTownName.toFront();
+    			hoverOverTextBoxOffMap.setText(town.getName());
     		}
     	});
     	
@@ -415,6 +425,7 @@ public class Controller {
     	button.setOnMouseExited(new EventHandler<MouseEvent>() {
     		public void handle(MouseEvent event) {
     			hoverOverTownName.setVisible(false);
+    			hoverOverTextBoxOffMap.setText("");
     		}
     	});
     	

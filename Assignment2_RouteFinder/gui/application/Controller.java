@@ -203,6 +203,25 @@ public class Controller {
     	edgeLine.setStartY(((Town) startTown.getContents()).getY());
     	edgeLine.setEndX(((Town) endTown.getContents()).getX());
     	edgeLine.setEndY(((Town) endTown.getContents()).getY());
+    	
+    	// When a town button is hovered over.
+    	edgeLine.setOnMouseEntered(new EventHandler<MouseEvent>() {
+    		public void handle(MouseEvent event) {
+    			Edge thisEdge = startTown.getAdjMap().get(endTown);
+    			hoverOverTownName.setText("DA: "+thisEdge.getDanger()+" DI: "+thisEdge.getDistance()+" EA: "+thisEdge.getEase());
+    			hoverOverTownName.setLayoutX(event.getX()+25);
+    			hoverOverTownName.setLayoutY(event.getY()-25);
+    			hoverOverTownName.setVisible(true);
+    		}
+    	});
+    	
+    	// When a  town button is hovered over AND THEN EXITED.
+    	edgeLine.setOnMouseExited(new EventHandler<MouseEvent>() {
+    		public void handle(MouseEvent event) {
+    			hoverOverTownName.setVisible(false);
+    		}
+    	});
+    	
     	mapPane.getChildren().add(edgeLine);
     	//edgeLine.toBack();
     }
@@ -305,6 +324,11 @@ public class Controller {
     		highlightedPathLines.add(edgeLine);
         	edgeLine.setStrokeWidth(5);
         	
+        	
+        	Town townFromNode = ((Town) path.get(i).getContents());
+    		pathListTextBox.setText(pathListTextBox.getText()+townFromNode.getName()+", \n");
+    		
+    		
         	// if there's no next node to add a line between
         	if (i == path.size()-1) {
         		return;
@@ -317,9 +341,10 @@ public class Controller {
         	edgeLine.setEndY((((Town) path.get(i+1).getContents()).getY()));
         	mapPane.getChildren().add(edgeLine);
     		
-    		Town townFromNode = ((Town) path.get(i).getContents());
-    		pathListTextBox.setText(pathListTextBox.getText()+townFromNode.getName()+", \n");
+    		
     	}
+    	
+    	updateOrder();
     }
     
     @FXML
@@ -411,8 +436,8 @@ public class Controller {
     				} else if (toTownName.getText().length() == 0) {
     					toTownName.setText(town.getName());
     				} else {
-    					// the next down selected will be a waypoint. If it already exists as a waypoint it is not added again.
-    					if (!townsToGoThrough.contains(town)) {
+    					// the next down selected will be a waypoint. If it already exists as a waypoint, start point or end point it is not added again.
+    					if (!townsToGoThrough.contains(Main.graph.getNodeByTownName(town.getName())) || (!toTownName.getText().equals(town.getName()) && !fromTownName.getText().equals(town.getName())) ) {
     						townsToGoThrough.add(Main.graph.getNodeByTownName(town.getName()));
     						waypointListTexBox.setText(waypointListTexBox.getText()+town.getName()+", \n");
     					}
@@ -422,7 +447,16 @@ public class Controller {
     	});
     	
     	mapPane.getChildren().add(button);
-    	button.toFront();
+    	updateOrder();
+    }
+    
+    public void updateOrder() {
+    	for (int i = 0; i < mapPane.getChildren().size(); i++) {
+    		if (mapPane.getChildren().get(i) instanceof Button) {
+    			System.out.println((((Button) mapPane.getChildren().get(i)).getText())); 
+    			mapPane.getChildren().get(i).toFront();
+    		}
+    	}
     }
     
     @FXML

@@ -201,4 +201,37 @@ public class Graph {
 		while (!unencountered.isEmpty());
 		return null; // No path found
 	}
+	
+	/**
+	 * Runs findShortestPath with waypoints.
+	 * @param start - The start node.
+	 * @param end - The end node.
+	 * @param weightType - Determines what Edge weight to use, can be "distance", "ease", or "danger".
+	 * @param waypoints - The nodes that the path will pass through (in order).
+	 * @return A path from start to end, which passes each node in waypoints.
+	 */
+	public ArrayList<Node<?>> findShortestPathWithWaypoints(Node<?> start, Node<?> end,
+			String weightType, ArrayList<Node<?>> waypoints) {
+		ArrayList<Node<?>> path = new ArrayList<>();
+		
+		for (Node<?> waypoint : waypoints) {
+			
+			// start to first waypoint
+			if (waypoint.equals(waypoints.get(0))) {
+				path.addAll(findShortestPath(start, waypoint, weightType));
+			}
+			
+			// waypoint to next waypoint
+			if (waypoints.get(waypoints.indexOf(waypoint)+1) != null) {
+				path.addAll(findShortestPath(waypoint, waypoints.get(waypoints.indexOf(waypoint)+1), weightType));
+			}
+			// waypoint to end
+			else {
+				path.addAll(findShortestPath(waypoint, end, weightType));
+			}
+		}
+		
+		return path;
+	}
+	
 }

@@ -212,6 +212,7 @@ public class Controller {
     			hoverOverTownName.setLayoutX(event.getX()+25);
     			hoverOverTownName.setLayoutY(event.getY()-25);
     			hoverOverTownName.setVisible(true);
+    			hoverOverTownName.toFront();
     		}
     	});
     	
@@ -347,11 +348,6 @@ public class Controller {
     	updateOrder();
     }
     
-    @FXML
-    void townSelected() {
-		System.out.println("Heelo");
-    }
-    
     /**
 	 * Grabs the x,y value of the mouse when called, converting from the original double to int (for Town class)
 	 * and finally to string to be displayed in text field.
@@ -377,6 +373,10 @@ public class Controller {
     @FXML
     void cancelButtonClicked(MouseEvent event) {
     	cleanState();
+    	for (int i = 0; i < highlightedPathLines.size(); i++) {
+    		mapPane.getChildren().remove(highlightedPathLines.get(i));
+    	}
+    	highlightedPathLines.clear();
     }
     
     public void cleanState() {
@@ -407,6 +407,7 @@ public class Controller {
     			hoverOverTownName.setLayoutX(button.getLayoutX()+25);
     			hoverOverTownName.setLayoutY(button.getLayoutY()-25);
     			hoverOverTownName.setVisible(true);
+    			hoverOverTownName.toFront();
     		}
     	});
     	
@@ -453,7 +454,6 @@ public class Controller {
     public void updateOrder() {
     	for (int i = 0; i < mapPane.getChildren().size(); i++) {
     		if (mapPane.getChildren().get(i) instanceof Button) {
-    			System.out.println((((Button) mapPane.getChildren().get(i)).getText())); 
     			mapPane.getChildren().get(i).toFront();
     		}
     	}
